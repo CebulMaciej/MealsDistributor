@@ -34,3 +34,27 @@ if not exists(select * from dbo.Users where USR_Email = @email)
 
 select * from dbo.Users where USR_Id = @newId
 end
+
+go
+
+create procedure UpdateUser
+@id uniqueidentifier,
+@email nvarchar(256),
+@password nvarchar(max)
+as
+begin
+
+if not exists(select * from dbo.Users where USR_Id = @id)
+	select Result = 2
+else
+if  exists(select * from dbo.Users where USR_Email = @email and USR_Id <> @id)
+	select Result = 1
+else
+begin
+	update dbo.Users
+	set USR_Password = isnull(@password,USR_Password),
+		USR_Email = isnull(@email,USR_Email)
+
+	select * from dbo.Users where USR_Id = @id
+end
+end
