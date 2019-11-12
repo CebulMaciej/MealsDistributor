@@ -7,5 +7,7 @@ namespace Data.DatabaseInfrastructure
     public static class StoredProceduresNames
     {
         public static string GetUserById = "GetUserById";
+        public static string AddUser = "AddUser";
+        public static string EditUser = "EditUser";
     }
 }

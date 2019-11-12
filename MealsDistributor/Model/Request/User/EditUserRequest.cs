@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MealsDistributor.Model.ApiModels;
-
-namespace MealsDistributor.Model.Request.User
+﻿namespace MealsDistributor.Model.Request.User
 {
-    public class EditUserRequest : UserApiModel
+    public class EditUserRequest
     {
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public bool IsValid => !string.IsNullOrWhiteSpace(Email) && !string.IsNullOrWhiteSpace(Password);
     }
 }
