@@ -1,0 +1,7 @@
+----------------------------------------
+12.11.2019 14:51:54
+System.Data.InvalidConstraintException
+   at MealsDistributor.Controllers.UsersController.GetUser() in C:\Users\Maciek\source\repos\MealsDistributor\MealsDistributor\Controllers\UsersController.cs:line 31
+Logging works
+System.Data.InvalidConstraintException: Logging works
+   at MealsDistributor.Controllers.UsersController.GetUser() in C:\Users\Maciek\source\repos\MealsDistributor\MealsDistributor\Controllers\UsersController.cs:line 31
