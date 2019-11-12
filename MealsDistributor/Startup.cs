@@ -1,9 +1,13 @@
+using Data.DatabaseInfrastructure.ProvidingSqlConnection.Concrete;
 using Data.Infrastructure.ProvidingSqlConnection.Abstract;
-using Data.Infrastructure.ProvidingSqlConnection.Concrete;
 using Data.Infrastructure.StoredProceduresExecution.Abstract;
 using Data.Infrastructure.StoredProceduresExecution.Concrete;
 using Domain.Infrastructure.Logging.Abstract;
 using Domain.Infrastructure.Logging.Concrete;
+using Domain.Providers.Users.Abstract;
+using Domain.Providers.Users.Concrete;
+using Domain.Repositories.Abstract;
+using Domain.Repositories.Concrete;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -30,6 +34,8 @@ namespace MealsDistributor
             services.AddTransient<ILogger, Logger>();
             services.AddTransient<ISqlConnectionProvider, SqlConnectionProvider>();
             services.AddTransient<IStoredProceduresExecutor, StoredProceduresExecutor>();
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IUserProvider, UserProvider>();
 
             services.AddSwaggerGen(c =>
             {

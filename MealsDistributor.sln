@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MealsDistributor", "MealsDi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{BFA8EA47-14C7-4BE5-8E1B-3CA111D75DEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{45EA1C8B-304D-428B-89C3-EE944B51E246}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{45EA1C8B-304D-428B-89C3-EE944B51E246}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

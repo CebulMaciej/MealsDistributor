@@ -3,6 +3,10 @@ using System.Data;
 using System.Threading.Tasks;
 using Data.Infrastructure.ProvidingSqlConnection.Abstract;
 using Domain.Infrastructure.Logging.Abstract;
+using Domain.Providers.Users.Abstract;
+using Domain.Providers.Users.Request.Concrete;
+using Domain.Providers.Users.Response.Abstract;
+using Domain.Repositories.Abstract;
 using MealsDistributor.Model.Request.Config;
 using MealsDistributor.Model.Request.User;
 using MealsDistributor.Model.Response.User;
@@ -15,22 +19,23 @@ namespace MealsDistributor.Controllers
     public class UsersController : ControllerBase
     {
         private readonly ILogger _logger;
-        private readonly ISqlConnectionProvider _sqlConnectionProvider;
+        private readonly IUserProvider _userProvider;
 
-        public UsersController(ILogger logger, ISqlConnectionProvider sqlConnectionProvider)
+        public UsersController(ILogger logger, IUserProvider userProvider)
         {
             _logger = logger;
-            _sqlConnectionProvider = sqlConnectionProvider;
+            _userProvider = userProvider;
         }
 
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(GetUserResponse))]
-        public Task<ActionResult> GetUser()
+        public async Task<ActionResult> GetUser()
         {
             try
             {
-                var p = _sqlConnectionProvider.GetSqlConnection();
-                //throw new InvalidConstraintException("Logging works");
+                IProvideUserResponse provideUserResponse = await _userProvider.GetUserById(
+                    new ProvideUserRequest(new Guid("FBFE5353-6D96-44B6-BF5B-19D2135E693F")));
+                return Ok(provideUserResponse);
             }
             catch (Exception ex)
             {

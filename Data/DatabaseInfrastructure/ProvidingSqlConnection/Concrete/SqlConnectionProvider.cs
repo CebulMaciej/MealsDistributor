@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Text;
+﻿using System.Data.SqlClient;
 using Data.Infrastructure.ProvidingSqlConnection.Abstract;
 using Microsoft.Extensions.Configuration;
 
-namespace Data.Infrastructure.ProvidingSqlConnection.Concrete
+namespace Data.DatabaseInfrastructure.ProvidingSqlConnection.Concrete
 {
     public class SqlConnectionProvider : ISqlConnectionProvider
     {
