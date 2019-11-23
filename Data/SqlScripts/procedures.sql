@@ -58,3 +58,33 @@ begin
 	select * from dbo.Users where USR_Id = @id
 end
 end
+
+go
+
+create procedure GetConfiguration
+@key nvarchar(256)
+as
+begin
+	
+	select CON_Key, CON_Value from [Configurations] where CON_Key = @key
+
+end
+
+go
+
+
+create procedure UpdateConfigurationAndThenGet
+@key nvarchar(256),
+@value nvarchar(256)
+as
+begin
+	
+	Update [Configurations]
+	set CON_Value = @value
+	where CON_Key = @key
+
+	select CON_Key, CON_Value from [Configurations] where CON_Key = @key
+
+end
+
+go

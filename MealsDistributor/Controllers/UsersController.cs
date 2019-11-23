@@ -116,7 +116,7 @@ namespace MealsDistributor.Controllers
                     return StatusCode(400);
                 }
 
-                IUserUpdateRequest userUpdateRequest = new UserUpdateRequest(requestModel.Email,requestModel.Password);
+                IUserUpdateRequest userUpdateRequest = new UserUpdateRequest(requestModel.Email,requestModel.Password,requestModel.Id);
                 IUserUpdateResponse userUpdateResponse = await _userUpdater.UpdateUser(userUpdateRequest);
                 return PrepareResponseAfterEditUser(userUpdateResponse);
             }

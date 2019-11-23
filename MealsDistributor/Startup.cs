@@ -10,6 +10,8 @@ using Domain.Providers.Users.Abstract;
 using Domain.Providers.Users.Concrete;
 using Domain.Repositories.Abstract;
 using Domain.Repositories.Concrete;
+using Domain.Updater.Abstract;
+using Domain.Updater.Concrete;
 using MealsDistributor.Infrastructure.ObjectsToModelConverting.Abstract;
 using MealsDistributor.Infrastructure.ObjectsToModelConverting.Concrete;
 using Microsoft.AspNetCore.Builder;
@@ -42,6 +44,10 @@ namespace MealsDistributor
             services.AddTransient<IUserProvider, UserProvider>();
             services.AddTransient<IUserCreator, UserCreator>();
             services.AddTransient<IObjectToApiModelConverter, ObjectToApiModelConverter>();
+            services.AddTransient<IConfigurationRepository, ConfigurationRepository>();
+            services.AddTransient<Domain.Providers.Configuration.Abstract.IConfigurationProvider, Domain.Providers.Configuration.Concrete.ConfigurationProvider>();
+            services.AddTransient<IConfigurationUpdater, ConfigurationUpdater>();
+
 
             services.AddSwaggerGen(c =>
             {

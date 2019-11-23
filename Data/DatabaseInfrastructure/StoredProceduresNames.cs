@@ -9,5 +9,7 @@ namespace Data.DatabaseInfrastructure
         public static string GetUserById = "GetUserById";
         public static string AddUser = "AddUser";
         public static string EditUser = "EditUser";
+        public static string GetConfiguration = "GetConfiguration";
+        public static string UpdateConfigurationAndThenGet = "UpdateConfigurationAndThenGet";
     }
 }

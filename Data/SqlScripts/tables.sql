@@ -58,8 +58,7 @@ create table Orders
 
 create table [Configurations]
 (
-	CON_Key uniqueidentifier primary key,
+	CON_Key nvarchar(256) primary key,
 	CON_Value nvarchar(max)
 )
-
 
