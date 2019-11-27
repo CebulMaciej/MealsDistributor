@@ -1,0 +1,162 @@
+----------------------------------------
+27.11.2019 22:06:21
+System.InvalidCastException
+   at Domain.Infrastructure.DataRowToObjectMapping.Concrete.DataRowToObjectMapper.ConvertMeal(DataRow dataRow) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Infrastructure\DataRowToObjectMapping\Concrete\DataRowToObjectMapper.cs:line 21
+   at Domain.Repositories.Concrete.MealRepository.ExtractMealFromDataRow(DataRow dataRow) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\MealRepository.cs:line 56
+   at Domain.Repositories.Concrete.MealRepository.ExtractMealFromDataSet(DataSet dataSet) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\MealRepository.cs:line 52
+   at Domain.Repositories.Concrete.MealRepository.GetMealById(Guid id) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\MealRepository.cs:line 31
+   at Domain.Providers.Meals.Concrete.MealProvider.GetMealById(IGetMealByIdRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\Meals\Concrete\MealProvider.cs:line 31
+Unable to cast object of type 'System.DBNull' to type 'System.Nullable`1[System.DateTime]'.
+System.InvalidCastException: Unable to cast object of type 'System.DBNull' to type 'System.Nullable`1[System.DateTime]'.
+   at Domain.Infrastructure.DataRowToObjectMapping.Concrete.DataRowToObjectMapper.ConvertMeal(DataRow dataRow) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Infrastructure\DataRowToObjectMapping\Concrete\DataRowToObjectMapper.cs:line 21
+   at Domain.Repositories.Concrete.MealRepository.ExtractMealFromDataRow(DataRow dataRow) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\MealRepository.cs:line 56
+   at Domain.Repositories.Concrete.MealRepository.ExtractMealFromDataSet(DataSet dataSet) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\MealRepository.cs:line 52
+   at Domain.Repositories.Concrete.MealRepository.GetMealById(Guid id) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\MealRepository.cs:line 31
+   at Domain.Providers.Meals.Concrete.MealProvider.GetMealById(IGetMealByIdRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\Meals\Concrete\MealProvider.cs:line 31
+----------------------------------------
+27.11.2019 22:14:45
+System.Data.SqlClient.SqlException
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.MealRepository.GetMealsByRestaurantId(Guid restaurantId) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\MealRepository.cs:line 35
+   at Domain.Providers.Meals.Concrete.MealProvider.GetMealsByRestaurantId(IGetMealsByRestaurantIdRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\Meals\Concrete\MealProvider.cs:line 45
+Invalid object name 'Restaurant'.
+System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Restaurant'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.MealRepository.GetMealsByRestaurantId(Guid restaurantId) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\MealRepository.cs:line 35
+   at Domain.Providers.Meals.Concrete.MealProvider.GetMealsByRestaurantId(IGetMealsByRestaurantIdRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\Meals\Concrete\MealProvider.cs:line 45
+ClientConnectionId:60ca65e4-3e49-4fe7-a090-3c3533e9f951
+Error Number:208,State:1,Class:16
+----------------------------------------
+27.11.2019 22:15:38
+System.Data.SqlClient.SqlException
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.MealRepository.GetMealsByRestaurantId(Guid restaurantId) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\MealRepository.cs:line 35
+   at Domain.Providers.Meals.Concrete.MealProvider.GetMealsByRestaurantId(IGetMealsByRestaurantIdRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\Meals\Concrete\MealProvider.cs:line 45
+Invalid object name 'Restaurant'.
+System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Restaurant'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.MealRepository.GetMealsByRestaurantId(Guid restaurantId) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\MealRepository.cs:line 35
+   at Domain.Providers.Meals.Concrete.MealProvider.GetMealsByRestaurantId(IGetMealsByRestaurantIdRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\Meals\Concrete\MealProvider.cs:line 45
+ClientConnectionId:60ca65e4-3e49-4fe7-a090-3c3533e9f951
+Error Number:208,State:1,Class:16
+----------------------------------------
+27.11.2019 22:16:10
+System.Data.SqlClient.SqlException
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.MealRepository.GetMealsByRestaurantId(Guid restaurantId) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\MealRepository.cs:line 35
+   at Domain.Providers.Meals.Concrete.MealProvider.GetMealsByRestaurantId(IGetMealsByRestaurantIdRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\Meals\Concrete\MealProvider.cs:line 45
+Invalid object name 'Restaurant'.
+System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Restaurant'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.MealRepository.GetMealsByRestaurantId(Guid restaurantId) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\MealRepository.cs:line 35
+   at Domain.Providers.Meals.Concrete.MealProvider.GetMealsByRestaurantId(IGetMealsByRestaurantIdRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\Meals\Concrete\MealProvider.cs:line 45
+ClientConnectionId:60ca65e4-3e49-4fe7-a090-3c3533e9f951
+Error Number:208,State:1,Class:16

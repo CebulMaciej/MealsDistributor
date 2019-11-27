@@ -88,3 +88,63 @@ begin
 end
 
 go
+
+create procedure GetMealById
+@mealId uniqueidentifier
+as
+begin
+
+	select 
+	MLS_Id,
+	MLS_Name,
+	MLS_Description,
+	MLS_Price,
+	MLS_StartDate,
+	MLS_EndDate,
+	MLS_RestaurantId
+	from Meals where MLS_Id = @mealId
+end
+
+go
+
+create procedure GetMealsByRestaurantId
+@restaurantId uniqueidentifier
+as
+begin
+
+	if( exists(select * from Restaurants where RST_Id = @restaurantId))
+
+	select ExistsRestaurant = cast(case when exists(select * from Restaurants where RST_Id = @restaurantId) then 1 else 0 end as bit)
+
+	select 
+	MLS_Id,
+	MLS_Name,
+	MLS_Description,
+	MLS_Price,
+	MLS_StartDate,
+	MLS_EndDate,
+	MLS_RestaurantId
+	from Meals
+	where MLS_RestaurantId = @restaurantId
+end
+
+
+
+go
+
+create procedure GetRestaurantById
+@restaurantId uniqueidentifier
+as
+begin 
+
+select RST_Id,
+	RST_Name,
+	RST_PhoneNumber,
+	RST_IsPyszne,
+	RST_MinOrderCost,
+	RST_DeliveryCost,
+	RST_MaxPaidOrderValue
+	from Restaurants
+	where RST_Id = @restaurantId
+
+end

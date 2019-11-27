@@ -36,5 +36,20 @@ namespace MealsDistributor.Infrastructure.ObjectsToModelConverting.Concrete
                 Value = configurationObject.Value
             };
         }
+
+        public MealApiModel ConvertMeal(Meal meal)
+        {
+            if (meal == null) return null;
+            return new MealApiModel
+            {
+                Id = meal.Id,
+                RestaurantId = meal.RestaurantId,
+                Description = meal.Description,
+                EndDate = meal.EndDate,
+                Name = meal.Name ,
+                Price = meal.Price ,
+                StartDate = meal.StartDate 
+            };
+        }
     }
 }

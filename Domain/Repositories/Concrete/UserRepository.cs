@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Data.DatabaseInfrastructure;
 using Data.Infrastructure.StoredProceduresExecution.Abstract;
 using Domain.BusinessObject;
+using Domain.Infrastructure.DataRowToObjectMapping.Abstract;
 using Domain.Object.Claims;
 using Domain.Repositories.Abstract;
 using Domain.Repositories.Responses;
@@ -17,10 +18,12 @@ namespace Domain.Repositories.Concrete
     public class UserRepository : IUserRepository
     {
         private readonly IStoredProceduresExecutor _storedProceduresExecutor;
+        private readonly IDataRowToObjectMapper _dataRowToObjectMapper;
 
-        public UserRepository(IStoredProceduresExecutor storedProceduresExecutor)
+        public UserRepository(IStoredProceduresExecutor storedProceduresExecutor, IDataRowToObjectMapper dataRowToObjectMapper)
         {
             _storedProceduresExecutor = storedProceduresExecutor;
+            _dataRowToObjectMapper = dataRowToObjectMapper;
         }
 
         public async Task<User> GetUser(Guid id)
@@ -58,17 +61,10 @@ namespace Domain.Repositories.Concrete
         }
 
 
-        private static User ExpandUserFromDataSet(DataSet dataSet)
+        private User ExpandUserFromDataSet(DataSet dataSet)
         {
-            if (dataSet.Tables[0].Rows.Count == 0) return null;
-            DataRow row = dataSet.Tables[0].Rows[0];
-            return new User(
-                Guid.Parse(row["USR_Id"].ToString()),
-                row["USR_Email"].ToString(),
-                row["USR_Password"].ToString(),
-                DateTime.Parse(row["USR_CreationDate"].ToString()),
-                (UserRole)int.Parse(row["USR_Role"].ToString())
-                );
+            DataRow dataRow = dataSet.Tables[0].Rows.Count == 0 ? null : dataSet.Tables[0].Rows[0];
+            return _dataRowToObjectMapper.ConvertUser(dataRow);
         }
     }
 }

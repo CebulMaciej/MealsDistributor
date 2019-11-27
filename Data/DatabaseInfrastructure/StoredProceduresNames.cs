@@ -11,5 +11,7 @@ namespace Data.DatabaseInfrastructure
         public static string EditUser = "EditUser";
         public static string GetConfiguration = "GetConfiguration";
         public static string UpdateConfigurationAndThenGet = "UpdateConfigurationAndThenGet";
+        public static string GetMealById = "GetMealById";
+        public static string GetMealsByRestaurantId = "GetMealsByRestaurantId";
     }
 }
