@@ -1,6 +1,11 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Domain.Creators.Meals.Abstract;
+using Domain.Creators.Meals.Request.Abstract;
+using Domain.Creators.Meals.Request.Concrete;
+using Domain.Creators.Meals.Response.Abstract;
+using Domain.Creators.Meals.Response.Const;
 using Domain.Infrastructure.Logging.Abstract;
 using Domain.Providers.Meals.Abstract;
 using Domain.Providers.Meals.Request.Abstract;
@@ -8,6 +13,7 @@ using Domain.Providers.Meals.Request.Concrete;
 using Domain.Providers.Meals.Response;
 using Domain.Providers.Meals.Response.Abstract;
 using MealsDistributor.Infrastructure.ObjectsToModelConverting.Abstract;
+using MealsDistributor.Model.ApiModels;
 using MealsDistributor.Model.Request.Meals;
 using MealsDistributor.Model.Response.Meal;
 using Microsoft.AspNetCore.Mvc;
@@ -22,12 +28,14 @@ namespace MealsDistributor.Controllers
         private readonly ILogger _logger;
         private readonly IMealProvider _mealsProvider;
         private readonly IObjectToApiModelConverter _objectToApiModelConverter;
+        private readonly IMealCreator _mealCreator;
 
-        public MealsController(ILogger logger, IMealProvider mealsProvider, IObjectToApiModelConverter objectToApiModelConverter)
+        public MealsController(ILogger logger, IMealProvider mealsProvider, IObjectToApiModelConverter objectToApiModelConverter, IMealCreator mealCreator)
         {
             _logger = logger;
             _mealsProvider = mealsProvider;
             _objectToApiModelConverter = objectToApiModelConverter;
+            _mealCreator = mealCreator;
         }
 
         [HttpGet("meal/{id:guid?}")]
@@ -93,23 +101,41 @@ namespace MealsDistributor.Controllers
 
         [HttpPost("meal")]
         [ProducesResponseType(200)]
-        public Task<ActionResult> AddMeal(AddMealRequestModel requestModel)
+        public async Task<ActionResult> AddMeal(AddMealRequestModel requestModel)
         {
             try
             {
+                if (!requestModel.RestaurantId.HasValue)
+                {
+                    return StatusCode(400);
+                }
 
+                ICreateMealRequest createMealRequest = PrepareCreateMealRequestFromApiRequest(requestModel);
+                ICreateMealResponse createMealResponse = await _mealCreator.CreateMeal(createMealRequest);
+
+                if (createMealResponse.Result == CreateMealEnum.Success)
+                {
+                    return Ok(createMealResponse.Meal);
+                }
+
+                return StatusCode(500);
             }
             catch (Exception ex)
             {
                 _logger.Log(ex);
+                return StatusCode(500);
             }
+        }
 
-            return null;
+        private static CreateMealRequest PrepareCreateMealRequestFromApiRequest(MealApiModel requestModel)
+        {
+            return new CreateMealRequest(requestModel.Name,requestModel.Description,
+                requestModel.Price, requestModel.StartDate, requestModel.EndDate, requestModel.RestaurantId.Value);
         }
 
         [HttpPut("meal")]
         [ProducesResponseType(200)]
-        public Task<ActionResult> EditMeal(EditMealRequestModel requestModel)
+        public async Task<ActionResult> EditMeal(EditMealRequestModel requestModel)
         {
             try
             {
@@ -118,9 +144,8 @@ namespace MealsDistributor.Controllers
             catch (Exception ex)
             {
                 _logger.Log(ex);
+                return StatusCode(500);
             }
-
-            return null;
         }
     }
 }

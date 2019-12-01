@@ -2,6 +2,8 @@ using Data.DatabaseInfrastructure.ProvidingSqlConnection.Concrete;
 using Data.Infrastructure.ProvidingSqlConnection.Abstract;
 using Data.Infrastructure.StoredProceduresExecution.Abstract;
 using Data.Infrastructure.StoredProceduresExecution.Concrete;
+using Domain.Creators.Meals.Abstract;
+using Domain.Creators.Meals.Concrete;
 using Domain.Creators.Users.Abstract;
 using Domain.Creators.Users.Concrete;
 using Domain.Infrastructure.DataRowToObjectMapping.Abstract;
@@ -14,8 +16,8 @@ using Domain.Providers.Users.Abstract;
 using Domain.Providers.Users.Concrete;
 using Domain.Repositories.Abstract;
 using Domain.Repositories.Concrete;
-using Domain.Updater.Abstract;
-using Domain.Updater.Concrete;
+using Domain.Updater.Configurations.Abstract;
+using Domain.Updater.Configurations.Concrete;
 using MealsDistributor.Infrastructure.ObjectsToModelConverting.Abstract;
 using MealsDistributor.Infrastructure.ObjectsToModelConverting.Concrete;
 using Microsoft.AspNetCore.Builder;
@@ -54,6 +56,7 @@ namespace MealsDistributor
             services.AddTransient<IDataRowToObjectMapper, DataRowToObjectMapper>();
             services.AddTransient<IMealRepository, MealRepository>();
             services.AddTransient<IMealProvider, MealProvider>();
+            services.AddTransient<IMealCreator, MealCreator>();
 
 
             services.AddSwaggerGen(c =>

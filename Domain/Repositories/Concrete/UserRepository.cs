@@ -11,7 +11,7 @@ using Domain.Infrastructure.DataRowToObjectMapping.Abstract;
 using Domain.Object.Claims;
 using Domain.Repositories.Abstract;
 using Domain.Repositories.Responses;
-using Domain.Updater.Response.Const;
+using Domain.Updater.Users.Response.Const;
 
 namespace Domain.Repositories.Concrete
 {

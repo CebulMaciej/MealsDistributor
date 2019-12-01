@@ -148,3 +148,30 @@ select RST_Id,
 	where RST_Id = @restaurantId
 
 end
+
+go
+
+create procedure CreateMeal
+@mealId uniqueidentifier,
+@name nvarchar(256),
+@description nvarchar(max),
+@price decimal(15,2),
+@startDate datetime,
+@endDate datetime,
+@restaurantId uniqueidentifier
+as
+begin
+
+	declare @newMealId uniqueIdentifier
+
+	select @newMealId = newid()
+
+	
+	insert into Meals values(@newMealId,@name,@description,@price,@startDate,@endDate,@restaurantId)
+
+	exec GetMealById @newMealId
+
+
+end
+
+go

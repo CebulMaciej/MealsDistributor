@@ -1,5 +1,5 @@
 ﻿using Domain.BusinessObject;
-using Domain.Updater.Response.Const;
+using Domain.Updater.Users.Response.Const;
 
 namespace Domain.Repositories.Responses
 {
