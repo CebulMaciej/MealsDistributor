@@ -65,6 +65,24 @@ namespace Domain.Repositories.Concrete
 
             return meals;
         }
+
+        public async Task<Meal> UpdateMeal(Guid id, string name, string description, decimal price, DateTime? startDate, DateTime? endDate,
+            Guid restaurantId)
+        {
+            DataSet dataSet = await _storedProceduresExecutor.ExecuteQuery(StoredProceduresNames.UpdateMeal,
+                new List<SqlParameter>
+                {
+                    new SqlParameter("@mealId",id),
+                    new SqlParameter("@name",name),
+                    new SqlParameter("@description",description),
+                    new SqlParameter("@price",price),
+                    new SqlParameter("@startDate",startDate),
+                    new SqlParameter("@endDate",endDate),
+                    new SqlParameter("@restaurantId",restaurantId)
+                });
+            return ExtractMealFromDataSet(dataSet);
+        }
+
         private Meal ExtractMealFromDataSet(DataSet dataSet)
         {
             DataRow dataRow = dataSet.Tables[0].Rows.Count == 0 ? null : dataSet.Tables[0].Rows[0];

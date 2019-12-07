@@ -14,5 +14,6 @@ namespace Data.DatabaseInfrastructure
         public static string GetMealById = "GetMealById";
         public static string GetMealsByRestaurantId = "GetMealsByRestaurantId";
         public static string CreateMeal = "CreateMeal";
+        public static string UpdateMeal = "UpdateMeal";
     }
 }

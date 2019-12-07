@@ -12,6 +12,10 @@ using Domain.Providers.Meals.Request.Abstract;
 using Domain.Providers.Meals.Request.Concrete;
 using Domain.Providers.Meals.Response;
 using Domain.Providers.Meals.Response.Abstract;
+using Domain.Updater.Meals.Abstract;
+using Domain.Updater.Meals.Request.Abstract;
+using Domain.Updater.Meals.Request.Concrete;
+using Domain.Updater.Meals.Response.Abstract;
 using MealsDistributor.Infrastructure.ObjectsToModelConverting.Abstract;
 using MealsDistributor.Model.ApiModels;
 using MealsDistributor.Model.Request.Meals;
@@ -29,13 +33,15 @@ namespace MealsDistributor.Controllers
         private readonly IMealProvider _mealsProvider;
         private readonly IObjectToApiModelConverter _objectToApiModelConverter;
         private readonly IMealCreator _mealCreator;
+        private readonly IMealUpdater _mealUpdater;
 
-        public MealsController(ILogger logger, IMealProvider mealsProvider, IObjectToApiModelConverter objectToApiModelConverter, IMealCreator mealCreator)
+        public MealsController(ILogger logger, IMealProvider mealsProvider, IObjectToApiModelConverter objectToApiModelConverter, IMealCreator mealCreator, IMealUpdater mealUpdater)
         {
             _logger = logger;
             _mealsProvider = mealsProvider;
             _objectToApiModelConverter = objectToApiModelConverter;
             _mealCreator = mealCreator;
+            _mealUpdater = mealUpdater;
         }
 
         [HttpGet("meal/{id:guid?}")]
@@ -139,7 +145,11 @@ namespace MealsDistributor.Controllers
         {
             try
             {
-
+                IUpdateMealRequest updateMealRequest = new UpdateMealRequest(requestModel.Id.Value, requestModel.Name,
+                    requestModel.Description, requestModel.Price, requestModel.StartDate, requestModel.EndDate,
+                    requestModel.RestaurantId.Value);
+                IUpdateMealResponse response = await _mealUpdater.UpdateMeal(updateMealRequest);
+                return null;
             }
             catch (Exception ex)
             {

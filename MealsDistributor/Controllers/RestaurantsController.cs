@@ -15,6 +15,12 @@ namespace MealsDistributor.Controllers
     {
 
         private readonly ILogger _logger;
+
+        public RestaurantsController(ILogger logger)
+        {
+            _logger = logger;
+        }
+
         [HttpGet("restaurant/{id:int}")]
         [ProducesResponseType(200, Type = typeof(GetRestaurantResponseModel))]
         public Task<ActionResult> GetRestaurant(int id)
@@ -32,7 +38,7 @@ namespace MealsDistributor.Controllers
 
         [HttpGet("restaurants")]
         [ProducesResponseType(200, Type = typeof(GetRestaurantsResponseModel))]
-        public Task<ActionResult> GetRestaurants(int restaurantId)
+        public Task<ActionResult> GetRestaurants()
         {
             try
             {

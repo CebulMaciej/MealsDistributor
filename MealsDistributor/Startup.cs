@@ -18,6 +18,8 @@ using Domain.Repositories.Abstract;
 using Domain.Repositories.Concrete;
 using Domain.Updater.Configurations.Abstract;
 using Domain.Updater.Configurations.Concrete;
+using Domain.Updater.Meals.Abstract;
+using Domain.Updater.Meals.Concrete;
 using MealsDistributor.Infrastructure.ObjectsToModelConverting.Abstract;
 using MealsDistributor.Infrastructure.ObjectsToModelConverting.Concrete;
 using Microsoft.AspNetCore.Builder;
@@ -57,6 +59,7 @@ namespace MealsDistributor
             services.AddTransient<IMealRepository, MealRepository>();
             services.AddTransient<IMealProvider, MealProvider>();
             services.AddTransient<IMealCreator, MealCreator>();
+            services.AddTransient<IMealUpdater, MealUpdater>();
 
 
             services.AddSwaggerGen(c =>

@@ -10,17 +10,17 @@ end
 go
 
 
-create procedure AddUser
-@email nvarchar(256),
-@password nvarchar(max)
-as
-begin
-
-	select * from dbo.Users where USR_Id = @userId
-
-end
-
-go
+--create procedure AddUser
+--@email nvarchar(256),
+--@password nvarchar(max)
+--as
+--begin
+--
+--	select * from dbo.Users where USR_Id = @userId
+--
+--end
+--
+--go
 
 create procedure AddUser
 @email nvarchar(256),
@@ -152,7 +152,6 @@ end
 go
 
 create procedure CreateMeal
-@mealId uniqueidentifier,
 @name nvarchar(256),
 @description nvarchar(max),
 @price decimal(15,2),
@@ -170,6 +169,38 @@ begin
 	insert into Meals values(@newMealId,@name,@description,@price,@startDate,@endDate,@restaurantId)
 
 	exec GetMealById @newMealId
+
+
+end
+
+go
+
+create procedure UpdateMeal
+@mealId uniqueidentifier,
+@name nvarchar(256),
+@description nvarchar(max),
+@price decimal(15,2),
+@startDate datetime,
+@endDate datetime,
+@restaurantId uniqueidentifier
+as
+begin
+
+	
+
+	
+	update Meals 
+	set 
+	MLS_Id =@mealId,
+	MLS_Name=@name,
+	MLS_Description = @description,
+	MLS_Price = @price,
+	MLS_StartDate = @startDate,
+	MLS_EndDate = @endDate,
+	MLS_RestaurantId = @restaurantId
+	where MLS_Id = @mealId
+
+	exec GetMealById @mealId
 
 
 end
