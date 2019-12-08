@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Domain.Infrastructure.Logging.Abstract;
 using Domain.Providers.Restaurants.Abstract;
 using Domain.Providers.Restaurants.Request.Abstract;
+using Domain.Providers.Restaurants.Request.Concrete;
 using Domain.Providers.Restaurants.Response.Abstract;
 using Domain.Repositories.Abstract;
 
@@ -20,7 +21,7 @@ namespace Domain.Providers.Restaurants.Concrete
             _logger = logger;
         }
 
-        public Task<IGetRestaurantResponse> GetRestaurant(IGetRestaurantRequest request)
+        public async Task<IGetRestaurantResponse> GetRestaurant(IGetRestaurantRequest request)
         {
             try
             {
@@ -29,19 +30,20 @@ namespace Domain.Providers.Restaurants.Concrete
             catch (Exception ex)
             {
                 _logger.Log(ex);
-
+                return new GetRestaurantResponse();
             }
         }
 
-        public Task<IGetRestaurantsResponse> GetRestaurants(IGetRestaurantsRequest request)
+        public async Task<IGetRestaurantsResponse> GetRestaurants(IGetRestaurantsRequest request)
         {
             try
             {
-
+                _restaurantRepository
             }
             catch (Exception ex)
             {
                 _logger.Log(ex);
+                return new GetRestaurantsResponse();
             }
             throw new NotImplementedException();
         }

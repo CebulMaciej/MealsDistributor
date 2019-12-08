@@ -112,7 +112,7 @@ create procedure GetMealsByRestaurantId
 as
 begin
 
-	if( exists(select * from Restaurants where RST_Id = @restaurantId))
+	--if( exists(select * from Restaurants where RST_Id = @restaurantId))
 
 	select ExistsRestaurant = cast(case when exists(select * from Restaurants where RST_Id = @restaurantId) then 1 else 0 end as bit)
 
@@ -150,6 +150,74 @@ select RST_Id,
 end
 
 go
+
+create procedure GetRestaurants
+as
+begin 
+
+select RST_Id,
+	RST_Name,
+	RST_PhoneNumber,
+	RST_IsPyszne,
+	RST_MinOrderCost,
+	RST_DeliveryCost,
+	RST_MaxPaidOrderValue
+	from Restaurants
+
+end
+
+go
+
+
+create procedure AddRestaurant
+	@Name nvarchar(1024),
+	@PhoneNumber nvarchar(12),
+	@IsPyszne bit, 
+	@MinOrderCost decimal(15,2),
+	@DeliveryCost decimal(15,2),
+	@MaxPaidOrderValue decimal(15,2)
+as
+begin 
+
+declare @newId uniqueIdentifier
+
+	select @newId = newid()
+
+insert into Restaurants  values(@newId,@Name,@PhoneNumber,@IsPyszne,@MinOrderCost,@DeliveryCost,@MaxPaidOrderValue)
+
+exec GetRestaurantById @newId
+
+end
+
+go
+
+
+create procedure EditRestaurant
+    @Id uniqueidentifier,
+	@Name nvarchar(1024),
+	@PhoneNumber nvarchar(12),
+	@IsPyszne bit, 
+	@MinOrderCost decimal(15,2),
+	@DeliveryCost decimal(15,2),
+	@MaxPaidOrderValue decimal(15,2)
+as
+begin 
+
+
+update Restaurants set  
+RST_Name = @Name,
+RST_PhoneNumber = @PhoneNumber,
+RST_IsPyszne = @IsPyszne,
+RST_MinOrderCost = @MinOrderCost,
+RST_DeliveryCost = @DeliveryCost,
+RST_MaxPaidOrderValue = @MaxPaidOrderValue
+where RST_Id = @Id
+exec GetRestaurantById @Id
+
+end
+
+go
+
 
 create procedure CreateMeal
 @name nvarchar(256),
