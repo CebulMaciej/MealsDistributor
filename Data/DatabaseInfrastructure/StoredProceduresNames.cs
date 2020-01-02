@@ -17,12 +17,14 @@ namespace Data.DatabaseInfrastructure
         public static string GetMealsByRestaurantId = "GetMealsByRestaurantId";
         public static string CreateMeal = "CreateMeal";
         public static string UpdateMeal = "UpdateMeal";
+        public static string RemoveMeal = "RemoveMeal";
 
-        public static string CreateRestaurant = "CreateRestaurant";
+        public static string CreateRestaurant = "AddRestaurant";
         public static string GetRestaurant = "GetRestaurantById";
         public static string GetRestaurants = "GetRestaurants";
         public static string EditRestaurant = "EditRestaurant";
         public static string RemoveRestaurant = "RemoveRestaurant";
+        
 
     }
 }

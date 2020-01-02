@@ -46,9 +46,9 @@ namespace Domain.Repositories.Concrete
                 new SqlParameter("@Name",name),
                 new SqlParameter("@PhoneNumber",phoneNumber),
                 new SqlParameter("@IsPyszne",isPyszne),
-                new SqlParameter("@MinOrderCost",minOrderCost),
-                new SqlParameter("@DeliveryCost",deliveryCost),
-                new SqlParameter("@MaxPaidOrderValue",maxPaidOrderValue)
+                new SqlParameter("@MinOrderCost",minOrderCost ?? (object)DBNull.Value),
+                new SqlParameter("@DeliveryCost",deliveryCost ?? (object)DBNull.Value),
+                new SqlParameter("@MaxPaidOrderValue",maxPaidOrderValue ?? (object)DBNull.Value)
             };
             DataSet ds = await _storedProceduresExecutor.ExecuteQuery(StoredProceduresNames.EditRestaurant, parameters);
             return ReadFromDataSet(ds);
@@ -80,9 +80,13 @@ namespace Domain.Repositories.Concrete
             return result;
         }
 
-        public Task RemoveRestaurant(Guid id)
+        public async Task RemoveRestaurant(Guid id)
         {
-            throw new NotImplementedException();
+            await _storedProceduresExecutor.ExecuteNonQuery(StoredProceduresNames.RemoveRestaurant,
+                new List<SqlParameter>
+                {
+                    new SqlParameter("@restaurantId",id)
+                });
         }
 
         private static Restaurant ReadFromDataSet(DataSet ds)
@@ -93,7 +97,12 @@ namespace Domain.Repositories.Concrete
 
         private static Restaurant ReadFromDataRow(DataRow row)
         {
-            return new Restaurant((Guid)(row["RST_Id"]), row["RST_Name"]?.ToString(), row["RST_PhoneNumber"]?.ToString(), (bool)row["RST_IsPyszne"], (decimal?)row["RST_MinOrderCost"], (decimal?)row["RST_DeliveryCost"], (decimal?)row["RST_MaxPaidOrderValue"]);
+            decimal? minOrderCost = row["RST_MinOrderCost"] == DBNull.Value ? null : (decimal?) row["RST_MinOrderCost"];
+            decimal? deliveryCost = row["RST_DeliveryCost"] == DBNull.Value ? null : (decimal?) row["RST_DeliveryCost"];
+            decimal? maxPaidOrderValue = row["RST_MaxPaidOrderValue"] == DBNull.Value ? null : (decimal?) row["RST_MaxPaidOrderValue"];
+
+            return new Restaurant((Guid)(row["RST_Id"]), row["RST_Name"]?.ToString(), row["RST_PhoneNumber"]?.ToString(), (bool)row["RST_IsPyszne"], minOrderCost, deliveryCost, maxPaidOrderValue);
+
         }
     }
 }

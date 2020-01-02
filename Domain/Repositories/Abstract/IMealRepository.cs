@@ -15,5 +15,7 @@ namespace Domain.Repositories.Abstract
         Task<IList<Meal>> GetMealsByRestaurantId(Guid restaurantId);
         Task<Meal> UpdateMeal(Guid id, string name, string description, decimal price, DateTime? startDate, DateTime? endDate,
             Guid restaurantId);
+
+        Task RemoveMeal(Guid id);
     }
 }

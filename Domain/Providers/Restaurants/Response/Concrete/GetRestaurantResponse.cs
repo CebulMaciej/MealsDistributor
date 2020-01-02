@@ -12,6 +12,7 @@ namespace Domain.Providers.Restaurants.Response.Concrete
         public GetRestaurantResponse(Restaurant restaurant)
         {
             Restaurant = restaurant;
+            Result = RestaurantProvideResultEnum.Success;
         }
 
         public GetRestaurantResponse()

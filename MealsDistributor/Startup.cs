@@ -4,6 +4,8 @@ using Data.Infrastructure.StoredProceduresExecution.Abstract;
 using Data.Infrastructure.StoredProceduresExecution.Concrete;
 using Domain.Creators.Meals.Abstract;
 using Domain.Creators.Meals.Concrete;
+using Domain.Creators.Restaurants.Abstract;
+using Domain.Creators.Restaurants.Concrete;
 using Domain.Creators.Users.Abstract;
 using Domain.Creators.Users.Concrete;
 using Domain.Infrastructure.DataRowToObjectMapping.Abstract;
@@ -12,14 +14,22 @@ using Domain.Infrastructure.Logging.Abstract;
 using Domain.Infrastructure.Logging.Concrete;
 using Domain.Providers.Meals.Abstract;
 using Domain.Providers.Meals.Concrete;
+using Domain.Providers.Restaurants.Abstract;
+using Domain.Providers.Restaurants.Concrete;
 using Domain.Providers.Users.Abstract;
 using Domain.Providers.Users.Concrete;
+using Domain.Remover.Meals.Abstract;
+using Domain.Remover.Meals.Concrete;
+using Domain.Remover.Restaurants.Abstract;
+using Domain.Remover.Restaurants.Concrete;
 using Domain.Repositories.Abstract;
 using Domain.Repositories.Concrete;
 using Domain.Updater.Configurations.Abstract;
 using Domain.Updater.Configurations.Concrete;
 using Domain.Updater.Meals.Abstract;
 using Domain.Updater.Meals.Concrete;
+using Domain.Updater.Restaurants.Abstract;
+using Domain.Updater.Restaurants.Concrete;
 using MealsDistributor.Infrastructure.ObjectsToModelConverting.Abstract;
 using MealsDistributor.Infrastructure.ObjectsToModelConverting.Concrete;
 using Microsoft.AspNetCore.Builder;
@@ -60,6 +70,15 @@ namespace MealsDistributor
             services.AddTransient<IMealProvider, MealProvider>();
             services.AddTransient<IMealCreator, MealCreator>();
             services.AddTransient<IMealUpdater, MealUpdater>();
+            services.AddTransient<IMealsRemover, MealsRemover>();
+
+            services.AddTransient<IRestaurantRepository, RestaurantRepository>();
+            services.AddTransient<IRestaurantProvider, RestaurantProvider>();
+            services.AddTransient<IRestaurantCreator, RestaurantCreator>();
+            services.AddTransient<IRestaurantUpdater, RestaurantUpdater>();
+            services.AddTransient<IRestaurantRemover, RestaurantRemover>();
+            
+
 
 
             services.AddSwaggerGen(c =>

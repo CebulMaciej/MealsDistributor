@@ -83,6 +83,14 @@ namespace Domain.Repositories.Concrete
             return ExtractMealFromDataSet(dataSet);
         }
 
+        public async Task RemoveMeal(Guid id)
+        {
+            await _storedProceduresExecutor.ExecuteNonQuery(StoredProceduresNames.RemoveMeal, new List<SqlParameter>
+            {
+                new SqlParameter("@mealId",id)
+            });
+        }
+
         private Meal ExtractMealFromDataSet(DataSet dataSet)
         {
             DataRow dataRow = dataSet.Tables[0].Rows.Count == 0 ? null : dataSet.Tables[0].Rows[0];

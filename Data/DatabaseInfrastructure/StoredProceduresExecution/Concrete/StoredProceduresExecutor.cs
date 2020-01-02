@@ -17,7 +17,7 @@ namespace Data.Infrastructure.StoredProceduresExecution.Concrete
             _sqlConnectionProvider = sqlConnectionProvider;
         }
 
-        public async void ExecuteNonQuery(string name, IList<SqlParameter> parameters = null)
+        public async Task ExecuteNonQuery(string name, IList<SqlParameter> parameters = null)
         {
             await using SqlConnection connection = _sqlConnectionProvider.GetSqlConnection();
             await using SqlCommand sqlCommand = new SqlCommand(name, connection)

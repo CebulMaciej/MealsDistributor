@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.BusinessObject;
 using Domain.Infrastructure.Logging.Abstract;
+using Domain.Providers.Meals.Response;
 using Domain.Providers.Restaurants.Abstract;
 using Domain.Providers.Restaurants.Request.Abstract;
-using Domain.Providers.Restaurants.Request.Concrete;
 using Domain.Providers.Restaurants.Response.Abstract;
+using Domain.Providers.Restaurants.Response.Concrete;
 using Domain.Repositories.Abstract;
+using GetRestaurantsResponse = Domain.Providers.Restaurants.Request.Concrete.GetRestaurantsResponse;
 
 namespace Domain.Providers.Restaurants.Concrete
 {
@@ -25,7 +28,12 @@ namespace Domain.Providers.Restaurants.Concrete
         {
             try
             {
-
+                Restaurant restaurant = await _restaurantRepository.GetRestaurant(request.RestaurantId);
+                if (restaurant == null)
+                {
+                    return new GetRestaurantResponse(RestaurantProvideResultEnum.NotFound);
+                }
+                return new GetRestaurantResponse(restaurant);
             }
             catch (Exception ex)
             {
@@ -34,18 +42,22 @@ namespace Domain.Providers.Restaurants.Concrete
             }
         }
 
-        public async Task<IGetRestaurantsResponse> GetRestaurants(IGetRestaurantsRequest request)
+        public async Task<IGetRestaurantsResponse> GetRestaurants()
         {
             try
             {
-                _restaurantRepository
+                IList<Restaurant> restaurants = await _restaurantRepository.GetRestaurants();
+                if (restaurants == null)
+                {
+                    return new GetRestaurantsResponse(RestaurantProvideResultEnum.NotFound);
+                }
+                return new GetRestaurantsResponse(restaurants);
             }
             catch (Exception ex)
             {
                 _logger.Log(ex);
                 return new GetRestaurantsResponse();
             }
-            throw new NotImplementedException();
         }
     }
 }

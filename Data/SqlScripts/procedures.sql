@@ -10,18 +10,6 @@ end
 go
 
 
---create procedure AddUser
---@email nvarchar(256),
---@password nvarchar(max)
---as
---begin
---
---	select * from dbo.Users where USR_Id = @userId
---
---end
---
---go
-
 create procedure AddUser
 @email nvarchar(256),
 @password nvarchar(max)
@@ -219,6 +207,17 @@ end
 go
 
 
+create procedure RemoveRestaurant
+@restaurantId uniqueidentifier 
+as 
+begin
+
+delete from Restaurants where RST_Id = @restaurantId
+
+end
+
+go
+
 create procedure CreateMeal
 @name nvarchar(256),
 @description nvarchar(max),
@@ -273,4 +272,15 @@ begin
 
 end
 
+go
+
+
+create procedure RemoveMeal
+@mealId uniqueidentifier
+as 
+begin
+
+	delete from Meals where MLS_Id = @mealId
+
+end
 go

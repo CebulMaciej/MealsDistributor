@@ -1,0 +1,328 @@
+----------------------------------------
+02.01.2020 21:20:54
+System.InvalidCastException
+   at Domain.Repositories.Concrete.RestaurantRepository.ReadFromDataRow(DataRow row) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\RestaurantRepository.cs:line 100
+   at Domain.Repositories.Concrete.RestaurantRepository.GetRestaurants() in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\RestaurantRepository.cs:line 77
+   at Domain.Providers.Restaurants.Concrete.RestaurantProvider.GetRestaurants() in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\Restaurants\Concrete\RestaurantProvider.cs:line 49
+Unable to cast object of type 'System.DBNull' to type 'System.Nullable`1[System.Decimal]'.
+System.InvalidCastException: Unable to cast object of type 'System.DBNull' to type 'System.Nullable`1[System.Decimal]'.
+   at Domain.Repositories.Concrete.RestaurantRepository.ReadFromDataRow(DataRow row) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\RestaurantRepository.cs:line 100
+   at Domain.Repositories.Concrete.RestaurantRepository.GetRestaurants() in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\RestaurantRepository.cs:line 77
+   at Domain.Providers.Restaurants.Concrete.RestaurantProvider.GetRestaurants() in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\Restaurants\Concrete\RestaurantProvider.cs:line 49
+----------------------------------------
+02.01.2020 21:22:14
+System.InvalidCastException
+   at Domain.Repositories.Concrete.RestaurantRepository.ReadFromDataRow(DataRow row) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\RestaurantRepository.cs:line 100
+   at Domain.Repositories.Concrete.RestaurantRepository.GetRestaurants() in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\RestaurantRepository.cs:line 77
+   at Domain.Providers.Restaurants.Concrete.RestaurantProvider.GetRestaurants() in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\Restaurants\Concrete\RestaurantProvider.cs:line 49
+Unable to cast object of type 'System.DBNull' to type 'System.Nullable`1[System.Decimal]'.
+System.InvalidCastException: Unable to cast object of type 'System.DBNull' to type 'System.Nullable`1[System.Decimal]'.
+   at Domain.Repositories.Concrete.RestaurantRepository.ReadFromDataRow(DataRow row) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\RestaurantRepository.cs:line 100
+   at Domain.Repositories.Concrete.RestaurantRepository.GetRestaurants() in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\RestaurantRepository.cs:line 77
+   at Domain.Providers.Restaurants.Concrete.RestaurantProvider.GetRestaurants() in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\Restaurants\Concrete\RestaurantProvider.cs:line 49
+----------------------------------------
+02.01.2020 21:22:28
+System.InvalidCastException
+   at Domain.Repositories.Concrete.RestaurantRepository.ReadFromDataRow(DataRow row) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\RestaurantRepository.cs:line 100
+   at Domain.Repositories.Concrete.RestaurantRepository.GetRestaurants() in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\RestaurantRepository.cs:line 77
+   at Domain.Providers.Restaurants.Concrete.RestaurantProvider.GetRestaurants() in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\Restaurants\Concrete\RestaurantProvider.cs:line 49
+Unable to cast object of type 'System.DBNull' to type 'System.Nullable`1[System.Decimal]'.
+System.InvalidCastException: Unable to cast object of type 'System.DBNull' to type 'System.Nullable`1[System.Decimal]'.
+   at Domain.Repositories.Concrete.RestaurantRepository.ReadFromDataRow(DataRow row) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\RestaurantRepository.cs:line 100
+   at Domain.Repositories.Concrete.RestaurantRepository.GetRestaurants() in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\RestaurantRepository.cs:line 77
+   at Domain.Providers.Restaurants.Concrete.RestaurantProvider.GetRestaurants() in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\Restaurants\Concrete\RestaurantProvider.cs:line 49
+----------------------------------------
+02.01.2020 21:24:35
+System.InvalidCastException
+   at Domain.Repositories.Concrete.RestaurantRepository.ReadFromDataRow(DataRow row) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\RestaurantRepository.cs:line 100
+   at Domain.Repositories.Concrete.RestaurantRepository.GetRestaurants() in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\RestaurantRepository.cs:line 77
+   at Domain.Providers.Restaurants.Concrete.RestaurantProvider.GetRestaurants() in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\Restaurants\Concrete\RestaurantProvider.cs:line 49
+Unable to cast object of type 'System.DBNull' to type 'System.Nullable`1[System.Decimal]'.
+System.InvalidCastException: Unable to cast object of type 'System.DBNull' to type 'System.Nullable`1[System.Decimal]'.
+   at Domain.Repositories.Concrete.RestaurantRepository.ReadFromDataRow(DataRow row) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\RestaurantRepository.cs:line 100
+   at Domain.Repositories.Concrete.RestaurantRepository.GetRestaurants() in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\RestaurantRepository.cs:line 77
+   at Domain.Providers.Restaurants.Concrete.RestaurantProvider.GetRestaurants() in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\Restaurants\Concrete\RestaurantProvider.cs:line 49
+----------------------------------------
+02.01.2020 21:42:29
+System.Data.SqlClient.SqlException
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteNonQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 35
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteNonQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 35
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteNonQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 35
+   at Domain.Repositories.Concrete.RestaurantRepository.RemoveRestaurant(Guid id) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\RestaurantRepository.cs:line 85
+   at Domain.Remover.Restaurants.Concrete.RestaurantRemover.RemoveRestaurant(IRestaurantRemoveRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Remover\Restaurants\Concrete\RestaurantRemover.cs:line 29
+The DELETE statement conflicted with the REFERENCE constraint "FK__Meals__MLS_Resta__3D5E1FD2". The conflict occurred in database "DistributedProcessingDatabase", table "dbo.Meals", column 'MLS_RestaurantId'.
+The statement has been terminated.
+System.Data.SqlClient.SqlException (0x80131904): The DELETE statement conflicted with the REFERENCE constraint "FK__Meals__MLS_Resta__3D5E1FD2". The conflict occurred in database "DistributedProcessingDatabase", table "dbo.Meals", column 'MLS_RestaurantId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteNonQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 35
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteNonQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 35
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteNonQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 35
+   at Domain.Repositories.Concrete.RestaurantRepository.RemoveRestaurant(Guid id) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\RestaurantRepository.cs:line 85
+   at Domain.Remover.Restaurants.Concrete.RestaurantRemover.RemoveRestaurant(IRestaurantRemoveRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Remover\Restaurants\Concrete\RestaurantRemover.cs:line 29
+ClientConnectionId:3aac827c-a896-4ade-b046-715a76d7d82e
+Error Number:547,State:0,Class:16
+----------------------------------------
+02.01.2020 21:45:04
+System.Data.SqlClient.SqlException
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.RestaurantRepository.CreateRestaurant(String name, String phoneNumber, Boolean isPyszne, Nullable`1 minOrderCost, Nullable`1 deliveryCost, Nullable`1 maxPaidOrderValue) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\RestaurantRepository.cs:line 36
+   at Domain.Creators.Restaurants.Concrete.RestaurantCreator.CreateRestaurant(ICreateRestaurantRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Creators\Restaurants\Concrete\RestaurantCreator.cs:line 31
+Could not find stored procedure 'CreateRestaurant'.
+System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'CreateRestaurant'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.RestaurantRepository.CreateRestaurant(String name, String phoneNumber, Boolean isPyszne, Nullable`1 minOrderCost, Nullable`1 deliveryCost, Nullable`1 maxPaidOrderValue) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\RestaurantRepository.cs:line 36
+   at Domain.Creators.Restaurants.Concrete.RestaurantCreator.CreateRestaurant(ICreateRestaurantRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Creators\Restaurants\Concrete\RestaurantCreator.cs:line 31
+ClientConnectionId:3aac827c-a896-4ade-b046-715a76d7d82e
+Error Number:2812,State:62,Class:16
+----------------------------------------
+02.01.2020 21:49:20
+System.Data.SqlClient.SqlException
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.RestaurantRepository.EditRestaurant(Guid id, String name, String phoneNumber, Boolean isPyszne, Nullable`1 minOrderCost, Nullable`1 deliveryCost, Nullable`1 maxPaidOrderValue) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\RestaurantRepository.cs:line 53
+   at Domain.Updater.Restaurants.Concrete.RestaurantUpdater.UpdateRestaurant(IRestaurantUpdateRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Updater\Restaurants\Concrete\RestaurantUpdater.cs:line 31
+Procedure or function 'EditRestaurant' expects parameter '@MaxPaidOrderValue', which was not supplied.
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function 'EditRestaurant' expects parameter '@MaxPaidOrderValue', which was not supplied.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.RestaurantRepository.EditRestaurant(Guid id, String name, String phoneNumber, Boolean isPyszne, Nullable`1 minOrderCost, Nullable`1 deliveryCost, Nullable`1 maxPaidOrderValue) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\RestaurantRepository.cs:line 53
+   at Domain.Updater.Restaurants.Concrete.RestaurantUpdater.UpdateRestaurant(IRestaurantUpdateRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Updater\Restaurants\Concrete\RestaurantUpdater.cs:line 31
+ClientConnectionId:fe1afa43-2a34-49f2-9edf-76b23ce184ab
+Error Number:201,State:4,Class:16
+----------------------------------------
+02.01.2020 21:49:27
+System.Data.SqlClient.SqlException
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.RestaurantRepository.EditRestaurant(Guid id, String name, String phoneNumber, Boolean isPyszne, Nullable`1 minOrderCost, Nullable`1 deliveryCost, Nullable`1 maxPaidOrderValue) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\RestaurantRepository.cs:line 53
+   at Domain.Updater.Restaurants.Concrete.RestaurantUpdater.UpdateRestaurant(IRestaurantUpdateRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Updater\Restaurants\Concrete\RestaurantUpdater.cs:line 31
+Procedure or function 'EditRestaurant' expects parameter '@MaxPaidOrderValue', which was not supplied.
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function 'EditRestaurant' expects parameter '@MaxPaidOrderValue', which was not supplied.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.RestaurantRepository.EditRestaurant(Guid id, String name, String phoneNumber, Boolean isPyszne, Nullable`1 minOrderCost, Nullable`1 deliveryCost, Nullable`1 maxPaidOrderValue) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\RestaurantRepository.cs:line 53
+   at Domain.Updater.Restaurants.Concrete.RestaurantUpdater.UpdateRestaurant(IRestaurantUpdateRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Updater\Restaurants\Concrete\RestaurantUpdater.cs:line 31
+ClientConnectionId:fe1afa43-2a34-49f2-9edf-76b23ce184ab
+Error Number:201,State:4,Class:16
+----------------------------------------
+02.01.2020 21:49:53
+System.Data.SqlClient.SqlException
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.RestaurantRepository.EditRestaurant(Guid id, String name, String phoneNumber, Boolean isPyszne, Nullable`1 minOrderCost, Nullable`1 deliveryCost, Nullable`1 maxPaidOrderValue) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\RestaurantRepository.cs:line 53
+   at Domain.Updater.Restaurants.Concrete.RestaurantUpdater.UpdateRestaurant(IRestaurantUpdateRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Updater\Restaurants\Concrete\RestaurantUpdater.cs:line 31
+Procedure or function 'EditRestaurant' expects parameter '@MaxPaidOrderValue', which was not supplied.
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function 'EditRestaurant' expects parameter '@MaxPaidOrderValue', which was not supplied.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.RestaurantRepository.EditRestaurant(Guid id, String name, String phoneNumber, Boolean isPyszne, Nullable`1 minOrderCost, Nullable`1 deliveryCost, Nullable`1 maxPaidOrderValue) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\RestaurantRepository.cs:line 53
+   at Domain.Updater.Restaurants.Concrete.RestaurantUpdater.UpdateRestaurant(IRestaurantUpdateRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Updater\Restaurants\Concrete\RestaurantUpdater.cs:line 31
+ClientConnectionId:fe1afa43-2a34-49f2-9edf-76b23ce184ab
+Error Number:201,State:4,Class:16
+----------------------------------------
+02.01.2020 21:50:26
+System.Data.SqlClient.SqlException
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.RestaurantRepository.EditRestaurant(Guid id, String name, String phoneNumber, Boolean isPyszne, Nullable`1 minOrderCost, Nullable`1 deliveryCost, Nullable`1 maxPaidOrderValue) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\RestaurantRepository.cs:line 53
+   at Domain.Updater.Restaurants.Concrete.RestaurantUpdater.UpdateRestaurant(IRestaurantUpdateRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Updater\Restaurants\Concrete\RestaurantUpdater.cs:line 31
+Procedure or function 'EditRestaurant' expects parameter '@MaxPaidOrderValue', which was not supplied.
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function 'EditRestaurant' expects parameter '@MaxPaidOrderValue', which was not supplied.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.RestaurantRepository.EditRestaurant(Guid id, String name, String phoneNumber, Boolean isPyszne, Nullable`1 minOrderCost, Nullable`1 deliveryCost, Nullable`1 maxPaidOrderValue) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\RestaurantRepository.cs:line 53
+   at Domain.Updater.Restaurants.Concrete.RestaurantUpdater.UpdateRestaurant(IRestaurantUpdateRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Updater\Restaurants\Concrete\RestaurantUpdater.cs:line 31
+ClientConnectionId:fe1afa43-2a34-49f2-9edf-76b23ce184ab
+Error Number:201,State:4,Class:16

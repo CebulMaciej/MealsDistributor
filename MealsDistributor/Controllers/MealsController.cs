@@ -12,10 +12,15 @@ using Domain.Providers.Meals.Request.Abstract;
 using Domain.Providers.Meals.Request.Concrete;
 using Domain.Providers.Meals.Response;
 using Domain.Providers.Meals.Response.Abstract;
+using Domain.Remover.Meals.Abstract;
+using Domain.Remover.Meals.Request.Abstract;
+using Domain.Remover.Meals.Request.Concrete;
+using Domain.Remover.Meals.Response.Abstract;
 using Domain.Updater.Meals.Abstract;
 using Domain.Updater.Meals.Request.Abstract;
 using Domain.Updater.Meals.Request.Concrete;
 using Domain.Updater.Meals.Response.Abstract;
+using Domain.Updater.Meals.Response.Const;
 using MealsDistributor.Infrastructure.ObjectsToModelConverting.Abstract;
 using MealsDistributor.Model.ApiModels;
 using MealsDistributor.Model.Request.Meals;
@@ -34,14 +39,16 @@ namespace MealsDistributor.Controllers
         private readonly IObjectToApiModelConverter _objectToApiModelConverter;
         private readonly IMealCreator _mealCreator;
         private readonly IMealUpdater _mealUpdater;
+        private readonly IMealsRemover _mealsRemover;
 
-        public MealsController(ILogger logger, IMealProvider mealsProvider, IObjectToApiModelConverter objectToApiModelConverter, IMealCreator mealCreator, IMealUpdater mealUpdater)
+        public MealsController(ILogger logger, IMealProvider mealsProvider, IObjectToApiModelConverter objectToApiModelConverter, IMealCreator mealCreator, IMealUpdater mealUpdater, IMealsRemover mealsRemover)
         {
             _logger = logger;
             _mealsProvider = mealsProvider;
             _objectToApiModelConverter = objectToApiModelConverter;
             _mealCreator = mealCreator;
             _mealUpdater = mealUpdater;
+            _mealsRemover = mealsRemover;
         }
 
         [HttpGet("meal/{id:guid?}")]
@@ -149,7 +156,27 @@ namespace MealsDistributor.Controllers
                     requestModel.Description, requestModel.Price, requestModel.StartDate, requestModel.EndDate,
                     requestModel.RestaurantId.Value);
                 IUpdateMealResponse response = await _mealUpdater.UpdateMeal(updateMealRequest);
-                return null;
+
+                if (response.Result == UpdateMealResponseEnum.Success) return Ok(response.Meal);
+                return StatusCode(500);
+            }
+            catch (Exception ex)
+            {
+                _logger.Log(ex);
+                return StatusCode(500);
+            }
+        }
+        [HttpDelete("meal")]
+        [ProducesResponseType(200)]
+        public async Task<ActionResult> RemoveMeal(Guid mealId)
+        {
+            try
+            {
+                IMealRemoveRequest mealRemoveRequest = new MealRemoveRequest(mealId);
+                IMealRemoveResponse response = await _mealsRemover.RemoveMeal(mealRemoveRequest);
+                if(response.Success)
+                    return Ok();
+                return StatusCode(500);
             }
             catch (Exception ex)
             {

@@ -6,5 +6,6 @@ namespace Domain.Providers.Restaurants.Request.Abstract
 {
     public interface IGetRestaurantRequest
     {
+        Guid RestaurantId { get; }
     }
 }

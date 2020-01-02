@@ -10,6 +10,6 @@ namespace Domain.Providers.Restaurants.Abstract
     public interface IRestaurantProvider
     {
         Task<IGetRestaurantResponse> GetRestaurant(IGetRestaurantRequest request);
-        Task<IGetRestaurantsResponse> GetRestaurants(IGetRestaurantsRequest request);
+        Task<IGetRestaurantsResponse> GetRestaurants();
     }
 }
