@@ -9,6 +9,7 @@ namespace Data.DatabaseInfrastructure
         public static string GetUserById = "GetUserById";
         public static string AddUser = "AddUser";
         public static string EditUser = "EditUser";
+        public static string GetUserByLoginAndPassword = "GetUserByLoginAndPassword";
 
         public static string GetConfiguration = "GetConfiguration";
         public static string UpdateConfigurationAndThenGet = "UpdateConfigurationAndThenGet";
@@ -24,6 +25,12 @@ namespace Data.DatabaseInfrastructure
         public static string GetRestaurants = "GetRestaurants";
         public static string EditRestaurant = "EditRestaurant";
         public static string RemoveRestaurant = "RemoveRestaurant";
+
+        public static string GetOrders = "GetOrders";
+        public static string GetOrderById = "GetOrderById";
+        public static string GetOrderPositionsByOrderId = "GetOrderPositionsByOrderId";
+        public static string GetOrderPositionsByUserId = "GetOrderPositionsByUserId";
+        
         
 
     }

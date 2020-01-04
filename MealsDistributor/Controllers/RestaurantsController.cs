@@ -76,6 +76,9 @@ namespace MealsDistributor.Controllers
         {
             try
             {
+                var z = HttpContext.User;
+
+
                 IGetRestaurantsResponse getRestaurantsResponse = await _restaurantProvider.GetRestaurants();
                 switch (getRestaurantsResponse.Result)
                 {

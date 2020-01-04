@@ -42,5 +42,24 @@ namespace Domain.Providers.Users.Concrete
                 return new ProvideUserResponse(UserProvideResultEnum.Exception);
             }
         }
+
+        public async Task<IProvideUserResponse> GetUserByLoginAndPassword(IProvideUserRequestToLogin request)
+        {
+            try
+            {
+                User user = await _userRepository.GetUserByLoginAndPassword(request.Login, request.Password);
+                // ReSharper disable once ConvertIfStatementToReturnStatement
+                if (user == null)
+                {
+                    return new ProvideUserResponse(UserProvideResultEnum.NotFound);
+                }
+                return new ProvideUserResponse(user);
+            }
+            catch (Exception ex)
+            {
+                _logger.Log(ex);
+                return new ProvideUserResponse(UserProvideResultEnum.Exception);
+            }
+        }
     }
 }

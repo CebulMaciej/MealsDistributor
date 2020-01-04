@@ -284,3 +284,87 @@ begin
 
 end
 go
+
+create procedure GetUserByLoginAndPassword
+@login nvarchar(max),
+@password nvarchar(max)
+as
+begin
+
+	select USR_Id ,
+	USR_Email,
+	USR_Password,
+	USR_CreationDate,
+	USR_Role
+	from Users where USR_Email = @login and USR_Password = @password
+
+end
+
+go
+
+create procedure GetOrders
+as
+begin
+
+select ORD_Id,
+       ORD_CreationDate,
+	   ORD_OrderBoyId,
+	   ORD_RestaurantId,
+	   ORD_IsOrdered
+from Orders
+
+end
+
+go
+
+create procedure GetOrderById
+@orderId uniqueidentifier
+as
+begin
+
+select ORD_Id,
+       ORD_CreationDate,
+	   ORD_OrderBoyId,
+	   ORD_RestaurantId,
+	   ORD_IsOrdered
+
+from Orders
+
+where ORD_Id = @orderId
+
+end
+
+go
+
+create procedure GetOrderPositionsByOrderId
+@orderId uniqueidentifier
+as
+begin
+	select OP_Id,
+		   OP_CreationDate,
+		   OP_UserId,
+		   OP_MealId,
+		   OP_OrderId 
+
+	from OrderPositions 
+
+	where OP_OrderId = @orderId
+end
+
+go
+
+
+create procedure GetOrderPositionsByUserId
+@userId uniqueidentifier
+as
+begin
+	select OP_Id,
+		   OP_CreationDate,
+		   OP_UserId,
+		   OP_MealId,
+		   OP_OrderId 
+
+	from OrderPositions 
+
+	where OP_UserId = @userId
+end

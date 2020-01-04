@@ -35,6 +35,20 @@ namespace Domain.Repositories.Concrete
             return user;
         }
 
+        public async Task<User> GetUserByLoginAndPassword(string login,string password)
+        {
+
+            DataSet dataSet = await _storedProceduresExecutor.ExecuteQuery(StoredProceduresNames.GetUserByLoginAndPassword,
+                new List<SqlParameter>
+                {
+                    new SqlParameter("@login", login),
+                    new SqlParameter("@password", password)
+                });
+            User user = ExpandUserFromDataSet(dataSet);
+            return user;
+        }
+
+
         public async Task<User> AddUser(string email, string password)
         {
             DataSet dataSet = await _storedProceduresExecutor.ExecuteQuery(StoredProceduresNames.AddUser,

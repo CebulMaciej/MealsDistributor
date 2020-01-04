@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Domain.Infrastructure.Logging.Abstract;
+using Domain.Providers.OrdersPositions.Abstract;
+using Domain.Providers.OrdersPositions.Request.Abstract;
+using Domain.Providers.OrdersPositions.Request.Concrete;
+using Domain.Providers.OrdersPositions.Response.Abstract;
+using Domain.Providers.OrdersPositions.Response.Const;
+using MealsDistributor.Infrastructure.IdFromClaimsExpanding.Abstract;
 using MealsDistributor.Model.Request.OrderPosition;
 using MealsDistributor.Model.Response.OrderPosition;
 using Microsoft.AspNetCore.Mvc;
@@ -15,71 +21,63 @@ namespace MealsDistributor.Controllers
     {
 
         private readonly ILogger _logger;
+        private readonly IOrderPositionsProvider _orderPositionsProvider;
+        private readonly IUserIdFromClaimsExpander _userIdFromClaimsExpander;
 
-        public OrderPositionsController(ILogger logger)
+        public OrderPositionsController(ILogger logger, IOrderPositionsProvider orderPositionsProvider, IUserIdFromClaimsExpander userIdFromClaimsExpander)
         {
             _logger = logger;
+            _orderPositionsProvider = orderPositionsProvider;
+            _userIdFromClaimsExpander = userIdFromClaimsExpander;
         }
 
-        [HttpGet("order-position/{id:int}")]
+        [HttpGet("/order/{id:Guid}/order-position")]
         [ProducesResponseType(200, Type = typeof(GetOrderPositionResponseModel))]
-        public Task<ActionResult> GetOrderPosition(int id)
+        public async Task<ActionResult> GetOrderPosition(Guid id)
         {
             try
             {
+                IGetOrderPositionsByOrderIdRequest getOrderPositionsByOrderIdRequest = new GetOrderPositionsByOrderIdRequest(id);
+                IGetOrderPositionsResponse getOrderPositionsResponse = await _orderPositionsProvider.GetOrderPositionsByOrderId(getOrderPositionsByOrderIdRequest);
+                return PrepareResponseAfterGetOrderPositions(getOrderPositionsResponse);
             }
             catch (Exception ex)
             {
                 _logger.Log(ex);
+                return StatusCode(500);
             }
 
-            return null;
         }
 
         [HttpGet("order-positions")]
         [ProducesResponseType(200, Type = typeof(GetOrderPositionsResponseModel))]
-        public Task<ActionResult> GetOrderPositions()
-        {
-            try
-            {
-            }
-            catch (Exception ex)
-            {
-                _logger.Log(ex);
-            }
-
-            return null;
-        }
-
-        [HttpPost("order-position")]
-        [ProducesResponseType(200)]
-        public Task<ActionResult> AddOrderPosition(AddOrderPositionRequestModel requestModel)
+        public async Task<ActionResult> GetOrderPositions()
         {
             try
             {
 
+                IGetOrderPositionsByUserIdRequest getOrderPositionsByUserIdRequest = new GetOrderPositionsByUserIdRequest(_userIdFromClaimsExpander.ExpandIdFromClaims(HttpContext.User));
+                IGetOrderPositionsResponse getOrderPositionsResponse = await _orderPositionsProvider.GetOrderPositionsByUserId(getOrderPositionsByUserIdRequest);
+                return PrepareResponseAfterGetOrderPositions(getOrderPositionsResponse);
             }
             catch (Exception ex)
             {
                 _logger.Log(ex);
+                return StatusCode(500);
             }
-
-            return null;
         }
 
-        [HttpDelete("order-position/{id:int}")]
-        [ProducesResponseType(200)]
-        public Task<ActionResult> DeleteOrderPosition(int id)
+        private ActionResult PrepareResponseAfterGetOrderPositions(IGetOrderPositionsResponse getOrderPositionsResponse)
         {
-            try
+            return getOrderPositionsResponse.OrderPositionProvideResult switch
             {
-            }
-            catch (Exception ex)
-            {
-                _logger.Log(ex);
-            }
-
-            return null;
+                OrderPositionProvideResult.Success => (ActionResult) Ok(getOrderPositionsResponse.OrderPositions),
+                OrderPositionProvideResult.NotFound => NotFound(),
+                OrderPositionProvideResult.Exception => StatusCode(500),
+                OrderPositionProvideResult.Forbidden => Forbid(),
+                _ => throw new ArgumentOutOfRangeException()
+            };
         }
+
     }
 }

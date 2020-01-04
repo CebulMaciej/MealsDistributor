@@ -12,5 +12,6 @@ namespace Domain.Repositories.Abstract
         Task<User> GetUser(Guid id);
         Task<User> AddUser(string email,string password);
         Task<UserUpdateRepositoryResponse> EditUser(Guid id,string email, string password,bool changePassword = false);
+        Task<User> GetUserByLoginAndPassword(string login, string password);
     }
 }

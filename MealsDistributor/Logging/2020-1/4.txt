@@ -1,0 +1,96 @@
+----------------------------------------
+04.01.2020 13:35:32
+System.ArgumentException
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at Domain.Infrastructure.DataRowToObjectMapping.Concrete.DataRowToObjectMapper.ConvertUser(DataRow dataRow) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Infrastructure\DataRowToObjectMapping\Concrete\DataRowToObjectMapper.cs:line 80
+   at Domain.Repositories.Concrete.UserRepository.ExpandUserFromDataSet(DataSet dataSet) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\UserRepository.cs:line 81
+   at Domain.Repositories.Concrete.UserRepository.GetUserByLoginAndPassword(String login, String password) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\UserRepository.cs:line 47
+   at Domain.Providers.Users.Concrete.UserProvider.GetUserByLoginAndPassword(IProvideUserRequestToLogin request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\Users\Concrete\UserProvider.cs:line 48
+   at MealsDistributor.Controllers.AccountController.Login(LoginRequestModel requestModel) in C:\Users\Maciek\source\repos\MealsDistributor\MealsDistributor\Controllers\AccountController.cs:line 40
+Column 'USR_Role' does not belong to table Table.
+System.ArgumentException: Column 'USR_Role' does not belong to table Table.
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at Domain.Infrastructure.DataRowToObjectMapping.Concrete.DataRowToObjectMapper.ConvertUser(DataRow dataRow) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Infrastructure\DataRowToObjectMapping\Concrete\DataRowToObjectMapper.cs:line 80
+   at Domain.Repositories.Concrete.UserRepository.ExpandUserFromDataSet(DataSet dataSet) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\UserRepository.cs:line 81
+   at Domain.Repositories.Concrete.UserRepository.GetUserByLoginAndPassword(String login, String password) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\UserRepository.cs:line 47
+   at Domain.Providers.Users.Concrete.UserProvider.GetUserByLoginAndPassword(IProvideUserRequestToLogin request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\Users\Concrete\UserProvider.cs:line 48
+   at MealsDistributor.Controllers.AccountController.Login(LoginRequestModel requestModel) in C:\Users\Maciek\source\repos\MealsDistributor\MealsDistributor\Controllers\AccountController.cs:line 40
+----------------------------------------
+04.01.2020 13:35:43
+System.ArgumentException
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at Domain.Infrastructure.DataRowToObjectMapping.Concrete.DataRowToObjectMapper.ConvertUser(DataRow dataRow) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Infrastructure\DataRowToObjectMapping\Concrete\DataRowToObjectMapper.cs:line 80
+   at Domain.Repositories.Concrete.UserRepository.ExpandUserFromDataSet(DataSet dataSet) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\UserRepository.cs:line 81
+   at Domain.Repositories.Concrete.UserRepository.GetUserByLoginAndPassword(String login, String password) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\UserRepository.cs:line 47
+   at Domain.Providers.Users.Concrete.UserProvider.GetUserByLoginAndPassword(IProvideUserRequestToLogin request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\Users\Concrete\UserProvider.cs:line 48
+   at MealsDistributor.Controllers.AccountController.Login(LoginRequestModel requestModel) in C:\Users\Maciek\source\repos\MealsDistributor\MealsDistributor\Controllers\AccountController.cs:line 40
+Column 'USR_Role' does not belong to table Table.
+System.ArgumentException: Column 'USR_Role' does not belong to table Table.
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at Domain.Infrastructure.DataRowToObjectMapping.Concrete.DataRowToObjectMapper.ConvertUser(DataRow dataRow) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Infrastructure\DataRowToObjectMapping\Concrete\DataRowToObjectMapper.cs:line 80
+   at Domain.Repositories.Concrete.UserRepository.ExpandUserFromDataSet(DataSet dataSet) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\UserRepository.cs:line 81
+   at Domain.Repositories.Concrete.UserRepository.GetUserByLoginAndPassword(String login, String password) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\UserRepository.cs:line 47
+   at Domain.Providers.Users.Concrete.UserProvider.GetUserByLoginAndPassword(IProvideUserRequestToLogin request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\Users\Concrete\UserProvider.cs:line 48
+   at MealsDistributor.Controllers.AccountController.Login(LoginRequestModel requestModel) in C:\Users\Maciek\source\repos\MealsDistributor\MealsDistributor\Controllers\AccountController.cs:line 40
+----------------------------------------
+04.01.2020 13:36:31
+System.ArgumentException
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at Domain.Infrastructure.DataRowToObjectMapping.Concrete.DataRowToObjectMapper.ConvertUser(DataRow dataRow) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Infrastructure\DataRowToObjectMapping\Concrete\DataRowToObjectMapper.cs:line 80
+   at Domain.Repositories.Concrete.UserRepository.ExpandUserFromDataSet(DataSet dataSet) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\UserRepository.cs:line 81
+   at Domain.Repositories.Concrete.UserRepository.GetUserByLoginAndPassword(String login, String password) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\UserRepository.cs:line 47
+   at Domain.Providers.Users.Concrete.UserProvider.GetUserByLoginAndPassword(IProvideUserRequestToLogin request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\Users\Concrete\UserProvider.cs:line 48
+   at MealsDistributor.Controllers.AccountController.Login(LoginRequestModel requestModel) in C:\Users\Maciek\source\repos\MealsDistributor\MealsDistributor\Controllers\AccountController.cs:line 40
+Column 'USR_Role' does not belong to table Table.
+System.ArgumentException: Column 'USR_Role' does not belong to table Table.
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at Domain.Infrastructure.DataRowToObjectMapping.Concrete.DataRowToObjectMapper.ConvertUser(DataRow dataRow) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Infrastructure\DataRowToObjectMapping\Concrete\DataRowToObjectMapper.cs:line 80
+   at Domain.Repositories.Concrete.UserRepository.ExpandUserFromDataSet(DataSet dataSet) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\UserRepository.cs:line 81
+   at Domain.Repositories.Concrete.UserRepository.GetUserByLoginAndPassword(String login, String password) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\UserRepository.cs:line 47
+   at Domain.Providers.Users.Concrete.UserProvider.GetUserByLoginAndPassword(IProvideUserRequestToLogin request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\Users\Concrete\UserProvider.cs:line 48
+   at MealsDistributor.Controllers.AccountController.Login(LoginRequestModel requestModel) in C:\Users\Maciek\source\repos\MealsDistributor\MealsDistributor\Controllers\AccountController.cs:line 40
+----------------------------------------
+04.01.2020 16:44:45
+System.InvalidOperationException
+   at System.Linq.ThrowHelper.ThrowNoMatchException()
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source, Func`2 predicate)
+   at MealsDistributor.Infrastructure.IdFromClaimsExpanding.Concrete.UserIdFromClaimsExpander.ExpandIdFromClaims(ClaimsPrincipal claimsPrincipal) in C:\Users\Maciek\source\repos\MealsDistributor\MealsDistributor\Infrastructure\IdFromClaimsExpanding\Concrete\UserIdFromClaimsExpander.cs:line 14
+   at MealsDistributor.Controllers.OrderPositionsController.GetOrderPositions() in C:\Users\Maciek\source\repos\MealsDistributor\MealsDistributor\Controllers\OrderPositionsController.cs:line 59
+Sequence contains no matching element
+System.InvalidOperationException: Sequence contains no matching element
+   at System.Linq.ThrowHelper.ThrowNoMatchException()
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source, Func`2 predicate)
+   at MealsDistributor.Infrastructure.IdFromClaimsExpanding.Concrete.UserIdFromClaimsExpander.ExpandIdFromClaims(ClaimsPrincipal claimsPrincipal) in C:\Users\Maciek\source\repos\MealsDistributor\MealsDistributor\Infrastructure\IdFromClaimsExpanding\Concrete\UserIdFromClaimsExpander.cs:line 14
+   at MealsDistributor.Controllers.OrderPositionsController.GetOrderPositions() in C:\Users\Maciek\source\repos\MealsDistributor\MealsDistributor\Controllers\OrderPositionsController.cs:line 59
+----------------------------------------
+04.01.2020 16:44:59
+System.InvalidOperationException
+   at System.Linq.ThrowHelper.ThrowNoMatchException()
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source, Func`2 predicate)
+   at MealsDistributor.Infrastructure.IdFromClaimsExpanding.Concrete.UserIdFromClaimsExpander.ExpandIdFromClaims(ClaimsPrincipal claimsPrincipal) in C:\Users\Maciek\source\repos\MealsDistributor\MealsDistributor\Infrastructure\IdFromClaimsExpanding\Concrete\UserIdFromClaimsExpander.cs:line 14
+   at MealsDistributor.Controllers.OrderPositionsController.GetOrderPositions() in C:\Users\Maciek\source\repos\MealsDistributor\MealsDistributor\Controllers\OrderPositionsController.cs:line 59
+Sequence contains no matching element
+System.InvalidOperationException: Sequence contains no matching element
+   at System.Linq.ThrowHelper.ThrowNoMatchException()
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source, Func`2 predicate)
+   at MealsDistributor.Infrastructure.IdFromClaimsExpanding.Concrete.UserIdFromClaimsExpander.ExpandIdFromClaims(ClaimsPrincipal claimsPrincipal) in C:\Users\Maciek\source\repos\MealsDistributor\MealsDistributor\Infrastructure\IdFromClaimsExpanding\Concrete\UserIdFromClaimsExpander.cs:line 14
+   at MealsDistributor.Controllers.OrderPositionsController.GetOrderPositions() in C:\Users\Maciek\source\repos\MealsDistributor\MealsDistributor\Controllers\OrderPositionsController.cs:line 59
+----------------------------------------
+04.01.2020 16:45:34
+System.InvalidOperationException
+   at System.Linq.ThrowHelper.ThrowNoMatchException()
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source, Func`2 predicate)
+   at MealsDistributor.Infrastructure.IdFromClaimsExpanding.Concrete.UserIdFromClaimsExpander.ExpandIdFromClaims(ClaimsPrincipal claimsPrincipal) in C:\Users\Maciek\source\repos\MealsDistributor\MealsDistributor\Infrastructure\IdFromClaimsExpanding\Concrete\UserIdFromClaimsExpander.cs:line 14
+   at MealsDistributor.Controllers.OrderPositionsController.GetOrderPositions() in C:\Users\Maciek\source\repos\MealsDistributor\MealsDistributor\Controllers\OrderPositionsController.cs:line 59
+Sequence contains no matching element
+System.InvalidOperationException: Sequence contains no matching element
+   at System.Linq.ThrowHelper.ThrowNoMatchException()
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source, Func`2 predicate)
+   at MealsDistributor.Infrastructure.IdFromClaimsExpanding.Concrete.UserIdFromClaimsExpander.ExpandIdFromClaims(ClaimsPrincipal claimsPrincipal) in C:\Users\Maciek\source\repos\MealsDistributor\MealsDistributor\Infrastructure\IdFromClaimsExpanding\Concrete\UserIdFromClaimsExpander.cs:line 14
+   at MealsDistributor.Controllers.OrderPositionsController.GetOrderPositions() in C:\Users\Maciek\source\repos\MealsDistributor\MealsDistributor\Controllers\OrderPositionsController.cs:line 59

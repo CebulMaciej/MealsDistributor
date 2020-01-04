@@ -14,6 +14,10 @@ using Domain.Infrastructure.Logging.Abstract;
 using Domain.Infrastructure.Logging.Concrete;
 using Domain.Providers.Meals.Abstract;
 using Domain.Providers.Meals.Concrete;
+using Domain.Providers.Orders.Abstract;
+using Domain.Providers.Orders.Concrete;
+using Domain.Providers.OrdersPositions.Abstract;
+using Domain.Providers.OrdersPositions.Concrete;
 using Domain.Providers.Restaurants.Abstract;
 using Domain.Providers.Restaurants.Concrete;
 using Domain.Providers.Users.Abstract;
@@ -30,8 +34,13 @@ using Domain.Updater.Meals.Abstract;
 using Domain.Updater.Meals.Concrete;
 using Domain.Updater.Restaurants.Abstract;
 using Domain.Updater.Restaurants.Concrete;
+using Domain.Updater.Users.Abstract;
+using Domain.Updater.Users.Concrete;
+using MealsDistributor.Infrastructure.IdFromClaimsExpanding.Abstract;
+using MealsDistributor.Infrastructure.IdFromClaimsExpanding.Concrete;
 using MealsDistributor.Infrastructure.ObjectsToModelConverting.Abstract;
 using MealsDistributor.Infrastructure.ObjectsToModelConverting.Concrete;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -55,12 +64,18 @@ namespace MealsDistributor
         {
             services.AddControllers();
 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+            {
+                
+            });
+
             services.AddTransient<ILogger, Logger>();
             services.AddTransient<ISqlConnectionProvider, SqlConnectionProvider>();
             services.AddTransient<IStoredProceduresExecutor, StoredProceduresExecutor>();
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IUserProvider, UserProvider>();
             services.AddTransient<IUserCreator, UserCreator>();
+            services.AddTransient<IUserUpdater, UserUpdater>();
             services.AddTransient<IObjectToApiModelConverter, ObjectToApiModelConverter>();
             services.AddTransient<IConfigurationRepository, ConfigurationRepository>();
             services.AddTransient<Domain.Providers.Configuration.Abstract.IConfigurationProvider, Domain.Providers.Configuration.Concrete.ConfigurationProvider>();
@@ -72,14 +87,23 @@ namespace MealsDistributor
             services.AddTransient<IMealUpdater, MealUpdater>();
             services.AddTransient<IMealsRemover, MealsRemover>();
 
+
+            services.AddTransient<IUserIdFromClaimsExpander, UserIdFromClaimsExpander>();
+
+
+
             services.AddTransient<IRestaurantRepository, RestaurantRepository>();
             services.AddTransient<IRestaurantProvider, RestaurantProvider>();
             services.AddTransient<IRestaurantCreator, RestaurantCreator>();
             services.AddTransient<IRestaurantUpdater, RestaurantUpdater>();
             services.AddTransient<IRestaurantRemover, RestaurantRemover>();
-            
 
 
+            services.AddTransient<IOrderProvider, OrderProvider>();
+            services.AddTransient<IOrderRepository, OrderRepository>();
+
+            services.AddTransient<IOrderPositionsProvider, OrderPositionsProvider>();
+            services.AddTransient<IOrderPositionsRepository, OrderPositionsRepository>();
 
             services.AddSwaggerGen(c =>
             {
@@ -99,9 +123,10 @@ namespace MealsDistributor
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
-
+            
             app.UseSwagger();
 
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),

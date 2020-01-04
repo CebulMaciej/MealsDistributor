@@ -85,5 +85,20 @@ namespace Domain.Infrastructure.DataRowToObjectMapping.Concrete
                 (UserRole)int.Parse(dataRow["USR_Role"].ToString())
             );
         }
+
+        public Order ConvertOrder(DataRow dataRow)
+        {
+            if (dataRow == null) return null;
+            return new Order(Guid.Parse(dataRow["ORD_Id"].ToString()),DateTime.Parse(dataRow["ORD_CreationDate"].ToString()),Guid.Parse(dataRow["ORD_OrderBoyId"].ToString()),bool.Parse(dataRow["ORD_IsOrdered"].ToString()),Guid.Parse(dataRow["ORD_RestaurantId"].ToString()));
+        }
+
+        public OrderPosition ConvertOrderPosition(DataRow dataRow)
+        {
+            if (dataRow == null) return null;
+            return new OrderPosition(Guid.Parse(dataRow["OP_Id"].ToString()),DateTime.Parse(dataRow["OP_CreationDate"].ToString()),Guid.Parse(dataRow["OP_UserId"].ToString()),GetGuidFromRow(dataRow,"OP_MealId"),GetGuidFromRow(dataRow,"OP_OrderId"));
+        }
+
+        private static Guid GetGuidFromRow(DataRow row, string key) => Guid.Parse(row[key].ToString());
+        
     }
 }

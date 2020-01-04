@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Data.Infrastructure.ProvidingSqlConnection.Abstract;
 using Domain.Creators.Users.Abstract;
@@ -18,10 +19,12 @@ using Domain.Updater.Users.Request.Abstract;
 using Domain.Updater.Users.Request.Concrete;
 using Domain.Updater.Users.Response.Abstract;
 using Domain.Updater.Users.Response.Const;
+using MealsDistributor.Infrastructure.IdFromClaimsExpanding.Abstract;
 using MealsDistributor.Infrastructure.ObjectsToModelConverting.Abstract;
 using MealsDistributor.Model.Request.Config;
 using MealsDistributor.Model.Request.User;
 using MealsDistributor.Model.Response.User;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MealsDistributor.Controllers
@@ -35,24 +38,29 @@ namespace MealsDistributor.Controllers
         private readonly IUserCreator _userCreator;
         private readonly IObjectToApiModelConverter _objectToApiModelConverter;
         private readonly IUserUpdater _userUpdater;
+        private readonly IUserIdFromClaimsExpander _userIdFromClaimsExpander;
 
-        public UsersController(ILogger logger, IUserProvider userProvider, IUserCreator userCreator, IObjectToApiModelConverter objectToApiModelConverter, IUserUpdater userUpdater)
+        public UsersController(ILogger logger, IUserProvider userProvider, IUserCreator userCreator, IObjectToApiModelConverter objectToApiModelConverter, IUserUpdater userUpdater, IUserIdFromClaimsExpander userIdFromClaimsExpander)
         {
             _logger = logger;
             _userProvider = userProvider;
             _userCreator = userCreator;
             _objectToApiModelConverter = objectToApiModelConverter;
             _userUpdater = userUpdater;
+            _userIdFromClaimsExpander = userIdFromClaimsExpander;
         }
 
         [HttpGet]
+        [Authorize]
         [ProducesResponseType(200, Type = typeof(GetUserResponse))]
         public async Task<ActionResult> GetUser()
         {
             try
             {
+                Guid loggedInUserId = _userIdFromClaimsExpander.ExpandIdFromClaims(HttpContext.User);
+
                 IProvideUserResponse provideUserResponse = await _userProvider.GetUserById(
-                    new ProvideUserRequest(new Guid("FBFE5353-6D96-44B6-BF5B-19D2135E693F")));
+                    new ProvideUserRequest(loggedInUserId));
                 return PrepareResponseAfterGetUser(provideUserResponse);
             }
             catch (Exception ex)

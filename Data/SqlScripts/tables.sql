@@ -39,22 +39,24 @@ create table DeliveryHours
 	DH_StartTime time not null,
 	DH_EndTime time not null
 )
-
-create table OrderPositions
-(
-	OP_Id uniqueidentifier primary key,
-	OP_CreationDate datetime not null,
-	OP_UserId uniqueidentifier not null references Users(USR_Id),
-	OP_MealId uniqueidentifier not null references Meals(MLS_Id)
-)
-
 create table Orders
 (
 	ORD_Id uniqueidentifier primary key,
 	ORD_CreationDate datetime not null,
 	ORD_OrderBoyId uniqueidentifier not null references Users(USR_Id),
+	ORD_RestaurantId uniqueidentifier not null references Restaurants(RST_Id),
 	ORD_IsOrdered bit not null default 0
 )
+create table OrderPositions
+(
+	OP_Id uniqueidentifier primary key,
+	OP_CreationDate datetime not null,
+	OP_UserId uniqueidentifier not null references Users(USR_Id),
+	OP_MealId uniqueidentifier not null references Meals(MLS_Id),
+	OP_OrderId uniqueidentifier not null references Orders(ORD_Id)
+)
+
+
 
 create table [Configurations]
 (
@@ -62,3 +64,20 @@ create table [Configurations]
 	CON_Value nvarchar(max)
 )
 
+create table OrdersPropositions
+(
+	OrdProp_Id uniqueidentifier primary key,
+	OrdProp_CreationDate datetime not null,
+	OrdProp_TimeToOrdering datetime not null,
+	OrdProp_CreatorId uniqueidentifier not null references Users(USR_Id),
+	OrdProp_RestaurantId uniqueidentifier not null references Restaurants(RST_Id),
+	OrdProp_OrderingStopped bit not null default 0
+)
+
+create table OrdersPropositionsPositions
+(
+	OPP_Id uniqueidentifier primary key,
+	OPP_CreationDate datetime not null,
+	OPP_UserId uniqueidentifier not null references Users(USR_Id),
+	OPP_MealId uniqueidentifier not null references Meals(MLS_Id)
+)

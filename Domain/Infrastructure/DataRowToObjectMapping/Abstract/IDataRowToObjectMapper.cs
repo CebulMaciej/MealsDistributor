@@ -13,5 +13,9 @@ namespace Domain.Infrastructure.DataRowToObjectMapping.Abstract
         Restaurant ConvertRestaurant(DataRow dataRow);
         ConfigurationObject ConvertConfigurationObject(DataRow datarow);
         User ConvertUser(DataRow dataRow);
+
+        Order ConvertOrder(DataRow dataRow);
+
+        OrderPosition ConvertOrderPosition(DataRow dataRow);
     }
 }
