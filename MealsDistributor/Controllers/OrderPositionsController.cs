@@ -55,7 +55,6 @@ namespace MealsDistributor.Controllers
         {
             try
             {
-
                 IGetOrderPositionsByUserIdRequest getOrderPositionsByUserIdRequest = new GetOrderPositionsByUserIdRequest(_userIdFromClaimsExpander.ExpandIdFromClaims(HttpContext.User));
                 IGetOrderPositionsResponse getOrderPositionsResponse = await _orderPositionsProvider.GetOrderPositionsByUserId(getOrderPositionsByUserIdRequest);
                 return PrepareResponseAfterGetOrderPositions(getOrderPositionsResponse);

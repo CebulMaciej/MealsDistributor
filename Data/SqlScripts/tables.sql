@@ -79,5 +79,6 @@ create table OrdersPropositionsPositions
 	OPP_Id uniqueidentifier primary key,
 	OPP_CreationDate datetime not null,
 	OPP_UserId uniqueidentifier not null references Users(USR_Id),
-	OPP_MealId uniqueidentifier not null references Meals(MLS_Id)
+	OPP_MealId uniqueidentifier not null references Meals(MLS_Id),
+	Opp_OrderPropositionId uniqueidentifier not null references OrdersPropositions(OrdProp_Id)
 )

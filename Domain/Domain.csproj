@@ -15,12 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Providers\OrderPropositions\Abstract\" />
-    <Folder Include="Providers\OrderPropositions\Concrete\" />
-    <Folder Include="Providers\OrderPropositions\Request\Abstract\" />
-    <Folder Include="Providers\OrderPropositions\Request\Concrete\" />
-    <Folder Include="Providers\OrderPropositions\Response\Abstract\" />
-    <Folder Include="Providers\OrderPropositions\Response\Concrete\" />
     <Folder Include="Providers\OrderPropositonPositions\Abstract\" />
     <Folder Include="Providers\OrderPropositonPositions\Concrete\" />
     <Folder Include="Providers\OrderPropositonPositions\Request\Abstract\" />

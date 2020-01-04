@@ -17,5 +17,7 @@ namespace Domain.Infrastructure.DataRowToObjectMapping.Abstract
         Order ConvertOrder(DataRow dataRow);
 
         OrderPosition ConvertOrderPosition(DataRow dataRow);
+
+        OrderProposition ConvertOrderProposition(DataRow dataRow);
     }
 }

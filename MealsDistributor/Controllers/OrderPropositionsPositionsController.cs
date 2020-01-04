@@ -11,5 +11,6 @@ namespace MealsDistributor.Controllers
     [ApiController]
     public class OrderPropositionsPositionsController : ControllerBase
     {
+
     }
 }

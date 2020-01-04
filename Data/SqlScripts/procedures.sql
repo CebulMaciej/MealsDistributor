@@ -368,3 +368,119 @@ begin
 
 	where OP_UserId = @userId
 end
+
+
+go
+
+
+create procedure GetOrderPropositions
+as
+begin
+	select 
+		   OrdProp_Id,
+	       OrdProp_CreationDate,
+	       OrdProp_TimeToOrdering,
+		   OrdProp_CreatorId,
+		   OrdProp_RestaurantId,
+		   OrdProp_OrderingStopped 
+
+	from OrderPropositions 
+
+	where OrdProp_OrderingStopped = 0
+end
+
+go
+
+create procedure GetOrderPropositionsInWhichUserHasAvailableOffer
+@userId uniqueidentifier
+as
+begin
+	select OrdProp_Id,
+	       OrdProp_CreationDate,
+	       OrdProp_TimeToOrdering,
+		   OrdProp_CreatorId,
+		   OrdProp_RestaurantId,
+		   OrdProp_OrderingStopped 
+
+	from OrderPropositions op
+		join OrdersPropositionsPositions opp on op.OrdProp_Id = opp.Opp_OrderPropositionId
+	
+	where OPP_UserId = @userId
+end
+
+go
+
+
+create procedure CreateOrderProposition
+@userId uniqueidentifier,
+@timeToOrdering datetime,
+@restaurantId uniqueidentifier
+as
+begin
+	 
+	 if exists(select * from OrderPropositions where OrdProp_OrderingStopped = 0)
+	 begin
+		select ResultCode = 1
+	 end
+	 else
+		begin
+		    select ResultCode = 0
+
+			declare @newOrderPropositionId uniqueidentifier
+
+			select @newOrderPropositionId = newId()
+
+			insert into OrderPropositions values(@newOrderPropositionId,getdate(),@timeToOrdering,@creatorId,@restaurantId,0)
+		    
+			select OrdProp_Id,
+				   OrdProp_CreationDate,
+				   OrdProp_TimeToOrdering,
+				   OrdProp_CreatorId,
+				   OrdProp_RestaurantId,
+				   OrdProp_OrderingStopped  
+			from OrderPropositions 
+			where OrdProp_Id = @newOrderPropositionId
+
+		end
+
+end
+
+go
+
+create procedure GetOrderPropositionPositionsByPropositionOrderId
+@orderPropositionId uniqueidentifier
+as
+begin
+
+		select * from OrdersPropositionsPositions where OPP_OrderPropositionId = @orderPropositionId
+
+end
+
+go
+
+create procedure CreateOrderPropositionPosition
+@userId uniqueidentifier,
+@mealId uniqueidentifier,
+@orderPropositionId uniqueidentifier
+as
+begin
+	 
+			declare @newOrderPropositionPositionId uniqueidentifier
+
+			select @newOrderPropositionPositionId = newId()
+
+			insert into OrdersPropositionsPositions values(@newOrderPropositionPositionId,getdate(),@userId,@mealId,@orderPropositionId)
+		    
+			select OrdProp_Id,
+				   OrdProp_CreationDate,
+				   OrdProp_TimeToOrdering,
+				   OrdProp_CreatorId,
+				   OrdProp_RestaurantId,
+				   OrdProp_OrderingStopped
+			from OrderPropositions 
+			where OrdProp_Id = @newOrderPropositionPositionId
+
+end
+
+go
+
