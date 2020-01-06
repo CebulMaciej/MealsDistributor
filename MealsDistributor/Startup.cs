@@ -8,6 +8,8 @@ using Domain.Creators.OrderPropositions.Abstract;
 using Domain.Creators.OrderPropositions.Concrete;
 using Domain.Creators.OrderPropositionsPositions.Abstract;
 using Domain.Creators.OrderPropositionsPositions.Concrete;
+using Domain.Creators.Orders.Abstract;
+using Domain.Creators.Orders.Concrete;
 using Domain.Creators.Restaurants.Abstract;
 using Domain.Creators.Restaurants.Concrete;
 using Domain.Creators.Users.Abstract;
@@ -16,6 +18,8 @@ using Domain.Infrastructure.DataRowToObjectMapping.Abstract;
 using Domain.Infrastructure.DataRowToObjectMapping.Concrete;
 using Domain.Infrastructure.Logging.Abstract;
 using Domain.Infrastructure.Logging.Concrete;
+using Domain.Infrastructure.OrderPropositionRealizing.Abstract;
+using Domain.Infrastructure.OrderPropositionRealizing.Concrete;
 using Domain.Providers.Meals.Abstract;
 using Domain.Providers.Meals.Concrete;
 using Domain.Providers.OrderPropositionPositions.Abstract;
@@ -106,9 +110,9 @@ namespace MealsDistributor
             services.AddTransient<IRestaurantUpdater, RestaurantUpdater>();
             services.AddTransient<IRestaurantRemover, RestaurantRemover>();
 
-
-            services.AddTransient<IOrderProvider, OrderProvider>();
             services.AddTransient<IOrderRepository, OrderRepository>();
+            services.AddTransient<IOrderProvider, OrderProvider>();
+            services.AddTransient<IOrderCreator, OrderCreator>();
 
             services.AddTransient<IOrderPositionsProvider, OrderPositionsProvider>();
             services.AddTransient<IOrderPositionsRepository, OrderPositionsRepository>();
@@ -120,6 +124,10 @@ namespace MealsDistributor
             services.AddTransient<IOrderPropositionPositionRepository, OrderPropositionPositionRepository>();
             services.AddTransient<IOrderPropositionsPositionsCreator, OrderPropositionsPositionsCreator>();
             services.AddTransient<IOrderPropositionsPositionsProvider, OrderPropositionsPositionsProvider>();
+
+
+            
+            services.AddTransient<IOrderPropositionRealizator, OrderPropositionRealizator>();
 
             services.AddSwaggerGen(c =>
             {

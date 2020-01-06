@@ -9,6 +9,11 @@ using Domain.Creators.OrderPropositions.Request.Concrete;
 using Domain.Creators.OrderPropositions.Response.Abstract;
 using Domain.Creators.OrderPropositions.Response.Const;
 using Domain.Infrastructure.Logging.Abstract;
+using Domain.Infrastructure.OrderPropositionRealizing.Abstract;
+using Domain.Infrastructure.OrderPropositionRealizing.Request.Abstract;
+using Domain.Infrastructure.OrderPropositionRealizing.Request.Concrete;
+using Domain.Infrastructure.OrderPropositionRealizing.Response;
+using Domain.Infrastructure.OrderPropositionRealizing.Response.Abstract;
 using Domain.Providers.OrderPropositions.Abstract;
 using Domain.Providers.OrderPropositions.Request.Abstract;
 using Domain.Providers.OrderPropositions.Request.Concrete;
@@ -33,13 +38,15 @@ namespace MealsDistributor.Controllers
         private readonly IUserIdFromClaimsExpander _userIdFromClaimsExpander;
         private readonly IOrderPropositionsProvider _orderPropositionsProvider;
         private readonly IOrderPropositionsCreator _orderPropositionsCreator;
+        private readonly IOrderPropositionRealizator _orderPropositionRealizator;
 
-        public OrderPropositionController(ILogger logger, IUserIdFromClaimsExpander userIdFromClaimsExpander, IOrderPropositionsProvider orderPropositionsProvider, IOrderPropositionsCreator orderPropositionsCreator)
+        public OrderPropositionController(ILogger logger, IUserIdFromClaimsExpander userIdFromClaimsExpander, IOrderPropositionsProvider orderPropositionsProvider, IOrderPropositionsCreator orderPropositionsCreator, IOrderPropositionRealizator orderPropositionRealizator)
         {
             _logger = logger;
             _userIdFromClaimsExpander = userIdFromClaimsExpander;
             _orderPropositionsProvider = orderPropositionsProvider;
             _orderPropositionsCreator = orderPropositionsCreator;
+            _orderPropositionRealizator = orderPropositionRealizator;
         }
 
         [HttpGet("currentOrderPropositionsTakingPart")]
@@ -122,16 +129,25 @@ namespace MealsDistributor.Controllers
 
         }
 
-        [HttpPost("/{id:Guid}/realize")]
+        [HttpPost("{id:Guid}/realize")]
         [Authorize]
         [ProducesResponseType(200, Type = typeof(IList<OrderProposition>))]
-        public async Task<ActionResult> ConvertPropositionToOrder(CreateOrderPropositionRequestModel request)
+        public async Task<ActionResult> ConvertPropositionToOrder(Guid id)
         {
             try
             {
                 Guid loggedInUserId = _userIdFromClaimsExpander.ExpandIdFromClaims(HttpContext.User);
 
-                
+                IRealizeOrderPropositionRequest realizeOrderPropositionRequest = new RealizeOrderPropositionRequest(id,loggedInUserId);
+                IRealizeOrderPropositionResponse realizeOrderPropositionResponse = await _orderPropositionRealizator.RealizeOrderProposition(realizeOrderPropositionRequest);
+                return realizeOrderPropositionResponse.Result switch
+                {
+                    RealizeOrderPropositionResult.Exception => (ActionResult) StatusCode(500),
+                    RealizeOrderPropositionResult.Forbidden => Forbid(),
+                    RealizeOrderPropositionResult.NotFound => NotFound(),
+                    RealizeOrderPropositionResult.Success => Ok(realizeOrderPropositionResponse.Order),
+                    _ => throw new ArgumentOutOfRangeException()
+                };
             }
             catch (Exception ex)
             {

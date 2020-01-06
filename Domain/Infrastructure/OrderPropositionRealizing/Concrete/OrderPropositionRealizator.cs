@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.BusinessObject;
+using Domain.Creators.Orders.Abstract;
+using Domain.Creators.Orders.Request.Concrete;
+using Domain.Creators.Orders.Response.Abstract;
+using Domain.Creators.Orders.Response.Const;
 using Domain.Infrastructure.Logging.Abstract;
 using Domain.Infrastructure.OrderPropositionRealizing.Abstract;
 using Domain.Infrastructure.OrderPropositionRealizing.Request.Abstract;
@@ -21,11 +25,13 @@ namespace Domain.Infrastructure.OrderPropositionRealizing.Concrete
     {
         private readonly IOrderPropositionsProvider _orderPropositionsProvider;
         private readonly ILogger _logger;
+        private readonly IOrderCreator _orderCreator;
 
-        public OrderPropositionRealizator(IOrderPropositionsProvider orderPropositionsProvider, ILogger logger)
+        public OrderPropositionRealizator(IOrderPropositionsProvider orderPropositionsProvider, ILogger logger, IOrderCreator orderCreator)
         {
             _orderPropositionsProvider = orderPropositionsProvider;
             _logger = logger;
+            _orderCreator = orderCreator;
         }
 
         public async Task<IRealizeOrderPropositionResponse> RealizeOrderProposition(IRealizeOrderPropositionRequest request)
@@ -36,13 +42,15 @@ namespace Domain.Infrastructure.OrderPropositionRealizing.Concrete
                     new GetOrderPropositionByIdRequest(request.OrderPropositionId);
                 IGetOrderPropositionResponse getOrderPropositionResponse = await _orderPropositionsProvider.GetOrderPropositionById(getOrderPropositionByIdRequest);
 
-                switch (getOrderPropositionResponse.Result)
+                if (getOrderPropositionResponse.Result == OrderPropositionsProvideResultEnum.Exception ||
+                    getOrderPropositionResponse.Result == OrderPropositionsProvideResultEnum.Forbidden)
                 {
-                    case OrderPropositionsProvideResultEnum.Exception:
-                    case OrderPropositionsProvideResultEnum.Forbidden:
-                        return new RealizeOrderPropositionResponse(RealizeOrderPropositionResult.Exception);
-                    case OrderPropositionsProvideResultEnum.NotFound:
-                        return new RealizeOrderPropositionResponse(RealizeOrderPropositionResult.NotFound);
+                    return new RealizeOrderPropositionResponse(RealizeOrderPropositionResult.Exception);
+                }
+
+                if (getOrderPropositionResponse.Result == OrderPropositionsProvideResultEnum.NotFound)
+                {
+                    return new RealizeOrderPropositionResponse(RealizeOrderPropositionResult.NotFound);
                 }
 
                 OrderProposition orderProposition = getOrderPropositionResponse.OrderProposition;
@@ -50,8 +58,15 @@ namespace Domain.Infrastructure.OrderPropositionRealizing.Concrete
                 {
                     return new RealizeOrderPropositionResponse(RealizeOrderPropositionResult.Forbidden);
                 }
-                throw new NotImplementedException();
 
+                ICreateOrderResponse createOrderResponse = await _orderCreator.CreateOrder(new CreateOrderRequest(request.OrderPropositionId));
+                return createOrderResponse.Result switch
+                {
+                    CreateOrderResult.Success => new RealizeOrderPropositionResponse(createOrderResponse.Order),
+                    CreateOrderResult.Exception => new RealizeOrderPropositionResponse(RealizeOrderPropositionResult.Exception),
+                    CreateOrderResult.CreatedNotFound => new RealizeOrderPropositionResponse(RealizeOrderPropositionResult.Exception),
+                    _ => throw new ArgumentOutOfRangeException()
+                };
             }
             catch (Exception ex)
             {

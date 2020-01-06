@@ -30,6 +30,7 @@ namespace Data.DatabaseInfrastructure
         public static string GetOrderById = "GetOrderById";
         public static string GetOrderPositionsByOrderId = "GetOrderPositionsByOrderId";
         public static string GetOrderPositionsByUserId = "GetOrderPositionsByUserId";
+        public static string CreateOrderFromOrderProposition = "CreateOrderFromOrderProposition";
 
 
 

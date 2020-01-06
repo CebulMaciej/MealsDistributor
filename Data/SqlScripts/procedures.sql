@@ -395,7 +395,7 @@ create procedure GetOrderPropositionsInWhichUserHasAvailableOffer
 @userId uniqueidentifier
 as
 begin
-	select OrdProp_Id,
+	select distinct OrdProp_Id,
 	       OrdProp_CreationDate,
 	       OrdProp_TimeToOrdering,
 		   OrdProp_CreatorId,
@@ -482,6 +482,37 @@ create procedure GetOrderPropositionById
 as
 begin
  select * from OrdersPropositions where OrdProp_Id = @orderPropositionId
+end
+
+go
+
+create procedure CreateOrderFromOrderProposition
+@orderPropositionId uniqueidentifier 
+as
+begin
+
+	begin transaction
+
+		declare @orderBoyId uniqueidentifier
+
+		select top 1 @orderBoyId = OPP_UserId 
+		from OrdersPropositionsPositions 
+		where Opp_OrderPropositionId = @orderPropositionId 
+		order by newId()
+
+		declare @orderId uniqueidentifier = newId()
+
+		insert into dbo.Orders(ORD_Id,ORD_CreationDate,ORD_OrderBoyId,ORD_RestaurantId,ORD_IsOrdered)
+		(select @orderId,getdate(),@orderBoyId,z.OrdProp_RestaurantId,1 from dbo.OrdersPropositions z where OrdProp_Id = @orderPropositionId)
+
+		insert into dbo.OrderPositions(OP_Id,OP_CreationDate,OP_UserId,OP_MealId,OP_OrderId)
+		(select newId(),getdate(),OPP_UserId,OPP_MealId,@orderId from dbo.OrdersPropositionsPositions where OPP_OrderPropositionId = @orderPropositionId) 
+
+		exec GetOrderById @orderId
+
+
+	commit transaction
+
 end
 
 go

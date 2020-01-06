@@ -15,6 +15,7 @@ namespace Domain.Updater.Meals.Response.Concrete
         public UpdateMealResponse(Meal meal)
         {
             Meal = meal;
+            Result = UpdateMealResponseEnum.Success;
         }
         public Meal Meal { get; }
         public UpdateMealResponseEnum Result { get; }

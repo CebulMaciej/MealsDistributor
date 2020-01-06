@@ -40,12 +40,27 @@ namespace Domain.Repositories.Concrete
                 {
                     new SqlParameter("@orderId",orderId)
                 });
-            DataTable table = dataSet.Tables[0];
-            if (table.Rows.Count == 0)
+            return GetOrderFromDataTable(dataSet.Tables[0]);
+        }
+
+        
+        public async Task<Order> CreateOrder(Guid orderPropositionId)
+        {
+            DataSet dataSet = await _storedProceduresExecutor.ExecuteQuery(
+                StoredProceduresNames.CreateOrderFromOrderProposition, new List<SqlParameter>(1)
+                {
+                    new SqlParameter("@orderPropositionId", orderPropositionId)
+                });
+            return GetOrderFromDataTable(dataSet.Tables[0]);
+        }
+
+        private Order GetOrderFromDataTable(DataTable dataTable)
+        {
+            if (dataTable.Rows.Count == 0)
             {
                 return null;
             }
-            return _dataRowToObjectMapper.ConvertOrder(table.Rows[0]);
+            return _dataRowToObjectMapper.ConvertOrder(dataTable.Rows[0]);
         }
     }
 }
