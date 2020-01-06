@@ -11,6 +11,7 @@ namespace Domain.Repositories.Abstract
     {
         Task<IList<OrderProposition>> GetOrderPropositionsInWhichUserHasActualOffers(Guid userId);
         Task<IList<OrderProposition>> GetOrderPropositions();
+        Task<OrderProposition> GetOrderPropositionById(Guid id);
         Task<OrderPropositionWithResultCode> CreateOrderProposition(DateTime timeToOrdering, Guid userId, Guid restaurantId);
     }
 }

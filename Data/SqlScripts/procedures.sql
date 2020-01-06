@@ -384,7 +384,7 @@ begin
 		   OrdProp_RestaurantId,
 		   OrdProp_OrderingStopped 
 
-	from OrderPropositions 
+	from OrdersPropositions 
 
 	where OrdProp_OrderingStopped = 0
 end
@@ -402,7 +402,7 @@ begin
 		   OrdProp_RestaurantId,
 		   OrdProp_OrderingStopped 
 
-	from OrderPropositions op
+	from OrdersPropositions op
 		join OrdersPropositionsPositions opp on op.OrdProp_Id = opp.Opp_OrderPropositionId
 	
 	where OPP_UserId = @userId
@@ -418,7 +418,7 @@ create procedure CreateOrderProposition
 as
 begin
 	 
-	 if exists(select * from OrderPropositions where OrdProp_OrderingStopped = 0)
+	 if exists(select * from OrdersPropositions where OrdProp_OrderingStopped = 0)
 	 begin
 		select ResultCode = 1
 	 end
@@ -430,7 +430,7 @@ begin
 
 			select @newOrderPropositionId = newId()
 
-			insert into OrderPropositions values(@newOrderPropositionId,getdate(),@timeToOrdering,@creatorId,@restaurantId,0)
+			insert into OrdersPropositions values(@newOrderPropositionId,getdate(),@timeToOrdering,@userId,@restaurantId,0)
 		    
 			select OrdProp_Id,
 				   OrdProp_CreationDate,
@@ -438,7 +438,7 @@ begin
 				   OrdProp_CreatorId,
 				   OrdProp_RestaurantId,
 				   OrdProp_OrderingStopped  
-			from OrderPropositions 
+			from OrdersPropositions 
 			where OrdProp_Id = @newOrderPropositionId
 
 		end
@@ -471,16 +471,17 @@ begin
 
 			insert into OrdersPropositionsPositions values(@newOrderPropositionPositionId,getdate(),@userId,@mealId,@orderPropositionId)
 		    
-			select OrdProp_Id,
-				   OrdProp_CreationDate,
-				   OrdProp_TimeToOrdering,
-				   OrdProp_CreatorId,
-				   OrdProp_RestaurantId,
-				   OrdProp_OrderingStopped
-			from OrderPropositions 
-			where OrdProp_Id = @newOrderPropositionPositionId
+			select * from OrdersPropositionsPositions where OPP_Id = @newOrderPropositionPositionId
 
 end
 
 go
 
+create procedure GetOrderPropositionById
+@orderPropositionId uniqueidentifier
+as
+begin
+ select * from OrdersPropositions where OrdProp_Id = @orderPropositionId
+end
+
+go

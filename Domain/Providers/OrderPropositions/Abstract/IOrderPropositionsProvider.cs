@@ -11,5 +11,6 @@ namespace Domain.Providers.OrderPropositions.Abstract
     {
         Task<IGetOrderPropositionsResponse> GetOrderPropositionsInWhichUserTakeParts(IGetOrderPropositionsInWhichUserTakePartsRequest request);
         Task<IGetOrderPropositionsResponse> GetActualOrderPropositions();
+        Task<IGetOrderPropositionResponse> GetOrderPropositionById(IGetOrderPropositionByIdRequest request);
     }
 }

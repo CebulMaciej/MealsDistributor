@@ -1,0 +1,565 @@
+----------------------------------------
+06.01.2020 14:09:34
+System.Data.SqlClient.SqlException
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.OrderPropositionRepository.CreateOrderProposition(DateTime timeToOrdering, Guid userId, Guid restaurantId) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\OrderPropositionRepository.cs:line 46
+   at Domain.Creators.OrderPropositions.Concrete.OrderPropositionsCreator.CreateOrderProposition(IOrderPropositionCreationRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Creators\OrderPropositions\Concrete\OrderPropositionsCreator.cs:line 29
+Could not find stored procedure 'CreateOrderProposition'.
+System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'CreateOrderProposition'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.OrderPropositionRepository.CreateOrderProposition(DateTime timeToOrdering, Guid userId, Guid restaurantId) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\OrderPropositionRepository.cs:line 46
+   at Domain.Creators.OrderPropositions.Concrete.OrderPropositionsCreator.CreateOrderProposition(IOrderPropositionCreationRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Creators\OrderPropositions\Concrete\OrderPropositionsCreator.cs:line 29
+ClientConnectionId:3964a6c4-7b7c-4916-8773-895e105eb6db
+Error Number:2812,State:62,Class:16
+----------------------------------------
+06.01.2020 14:10:08
+System.Data.SqlClient.SqlException
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.OrderPropositionRepository.CreateOrderProposition(DateTime timeToOrdering, Guid userId, Guid restaurantId) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\OrderPropositionRepository.cs:line 46
+   at Domain.Creators.OrderPropositions.Concrete.OrderPropositionsCreator.CreateOrderProposition(IOrderPropositionCreationRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Creators\OrderPropositions\Concrete\OrderPropositionsCreator.cs:line 29
+Could not find stored procedure 'CreateOrderProposition'.
+System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'CreateOrderProposition'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.OrderPropositionRepository.CreateOrderProposition(DateTime timeToOrdering, Guid userId, Guid restaurantId) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\OrderPropositionRepository.cs:line 46
+   at Domain.Creators.OrderPropositions.Concrete.OrderPropositionsCreator.CreateOrderProposition(IOrderPropositionCreationRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Creators\OrderPropositions\Concrete\OrderPropositionsCreator.cs:line 29
+ClientConnectionId:3964a6c4-7b7c-4916-8773-895e105eb6db
+Error Number:2812,State:62,Class:16
+----------------------------------------
+06.01.2020 14:11:33
+System.Data.SqlClient.SqlException
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.OrderPropositionRepository.CreateOrderProposition(DateTime timeToOrdering, Guid userId, Guid restaurantId) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\OrderPropositionRepository.cs:line 46
+   at Domain.Creators.OrderPropositions.Concrete.OrderPropositionsCreator.CreateOrderProposition(IOrderPropositionCreationRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Creators\OrderPropositions\Concrete\OrderPropositionsCreator.cs:line 29
+Invalid object name 'OrderPropositions'.
+System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'OrderPropositions'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.OrderPropositionRepository.CreateOrderProposition(DateTime timeToOrdering, Guid userId, Guid restaurantId) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\OrderPropositionRepository.cs:line 46
+   at Domain.Creators.OrderPropositions.Concrete.OrderPropositionsCreator.CreateOrderProposition(IOrderPropositionCreationRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Creators\OrderPropositions\Concrete\OrderPropositionsCreator.cs:line 29
+ClientConnectionId:3964a6c4-7b7c-4916-8773-895e105eb6db
+Error Number:208,State:1,Class:16
+----------------------------------------
+06.01.2020 14:11:39
+System.Data.SqlClient.SqlException
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.OrderPropositionRepository.CreateOrderProposition(DateTime timeToOrdering, Guid userId, Guid restaurantId) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\OrderPropositionRepository.cs:line 46
+   at Domain.Creators.OrderPropositions.Concrete.OrderPropositionsCreator.CreateOrderProposition(IOrderPropositionCreationRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Creators\OrderPropositions\Concrete\OrderPropositionsCreator.cs:line 29
+Invalid object name 'OrderPropositions'.
+System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'OrderPropositions'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.OrderPropositionRepository.CreateOrderProposition(DateTime timeToOrdering, Guid userId, Guid restaurantId) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\OrderPropositionRepository.cs:line 46
+   at Domain.Creators.OrderPropositions.Concrete.OrderPropositionsCreator.CreateOrderProposition(IOrderPropositionCreationRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Creators\OrderPropositions\Concrete\OrderPropositionsCreator.cs:line 29
+ClientConnectionId:3964a6c4-7b7c-4916-8773-895e105eb6db
+Error Number:208,State:1,Class:16
+----------------------------------------
+06.01.2020 14:12:20
+System.Data.SqlClient.SqlException
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.OrderPropositionRepository.GetOrderPropositions() in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\OrderPropositionRepository.cs:line 40
+   at Domain.Providers.OrderPropositions.Concrete.OrderPropositionsProvider.GetActualOrderPropositions() in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\OrderPropositions\Concrete\OrderPropositionsProvider.cs:line 49
+Invalid object name 'OrderPropositions'.
+System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'OrderPropositions'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.OrderPropositionRepository.GetOrderPropositions() in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\OrderPropositionRepository.cs:line 40
+   at Domain.Providers.OrderPropositions.Concrete.OrderPropositionsProvider.GetActualOrderPropositions() in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\OrderPropositions\Concrete\OrderPropositionsProvider.cs:line 49
+ClientConnectionId:3964a6c4-7b7c-4916-8773-895e105eb6db
+Error Number:208,State:1,Class:16
+----------------------------------------
+06.01.2020 14:13:30
+System.Data.SqlClient.SqlException
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.OrderPropositionRepository.GetOrderPropositions() in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\OrderPropositionRepository.cs:line 40
+   at Domain.Providers.OrderPropositions.Concrete.OrderPropositionsProvider.GetActualOrderPropositions() in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\OrderPropositions\Concrete\OrderPropositionsProvider.cs:line 49
+Invalid object name 'OrderPropositions'.
+System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'OrderPropositions'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.OrderPropositionRepository.GetOrderPropositions() in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\OrderPropositionRepository.cs:line 40
+   at Domain.Providers.OrderPropositions.Concrete.OrderPropositionsProvider.GetActualOrderPropositions() in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\OrderPropositions\Concrete\OrderPropositionsProvider.cs:line 49
+ClientConnectionId:3964a6c4-7b7c-4916-8773-895e105eb6db
+Error Number:208,State:1,Class:16
+----------------------------------------
+06.01.2020 14:14:07
+System.Data.SqlClient.SqlException
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.OrderPropositionRepository.GetOrderPropositions() in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\OrderPropositionRepository.cs:line 40
+   at Domain.Providers.OrderPropositions.Concrete.OrderPropositionsProvider.GetActualOrderPropositions() in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\OrderPropositions\Concrete\OrderPropositionsProvider.cs:line 49
+Invalid object name 'OrderPropositions'.
+System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'OrderPropositions'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.OrderPropositionRepository.GetOrderPropositions() in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\OrderPropositionRepository.cs:line 40
+   at Domain.Providers.OrderPropositions.Concrete.OrderPropositionsProvider.GetActualOrderPropositions() in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\OrderPropositions\Concrete\OrderPropositionsProvider.cs:line 49
+ClientConnectionId:3964a6c4-7b7c-4916-8773-895e105eb6db
+Error Number:208,State:1,Class:16
+----------------------------------------
+06.01.2020 14:15:23
+System.IndexOutOfRangeException
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Domain.Repositories.Concrete.OrderPropositionPositionRepository.CreateOrderPropositionPosition(Guid userId, Guid mealId, Guid orderPropositionId) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\OrderPropositionPositionRepository.cs:line 54
+   at Domain.Creators.OrderPropositionsPositions.Concrete.OrderPropositionsPositionsCreator.CreateOrderPropositionPosition(IOrderPropositionPositionCreateRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Creators\OrderPropositionsPositions\Concrete\OrderPropositionsPositionsCreator.cs:line 30
+There is no row at position 0.
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Domain.Repositories.Concrete.OrderPropositionPositionRepository.CreateOrderPropositionPosition(Guid userId, Guid mealId, Guid orderPropositionId) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\OrderPropositionPositionRepository.cs:line 54
+   at Domain.Creators.OrderPropositionsPositions.Concrete.OrderPropositionsPositionsCreator.CreateOrderPropositionPosition(IOrderPropositionPositionCreateRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Creators\OrderPropositionsPositions\Concrete\OrderPropositionsPositionsCreator.cs:line 30
+----------------------------------------
+06.01.2020 14:17:41
+System.IndexOutOfRangeException
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Domain.Repositories.Concrete.OrderPropositionPositionRepository.CreateOrderPropositionPosition(Guid userId, Guid mealId, Guid orderPropositionId) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\OrderPropositionPositionRepository.cs:line 54
+   at Domain.Creators.OrderPropositionsPositions.Concrete.OrderPropositionsPositionsCreator.CreateOrderPropositionPosition(IOrderPropositionPositionCreateRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Creators\OrderPropositionsPositions\Concrete\OrderPropositionsPositionsCreator.cs:line 30
+There is no row at position 0.
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Domain.Repositories.Concrete.OrderPropositionPositionRepository.CreateOrderPropositionPosition(Guid userId, Guid mealId, Guid orderPropositionId) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\OrderPropositionPositionRepository.cs:line 54
+   at Domain.Creators.OrderPropositionsPositions.Concrete.OrderPropositionsPositionsCreator.CreateOrderPropositionPosition(IOrderPropositionPositionCreateRequest request) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Creators\OrderPropositionsPositions\Concrete\OrderPropositionsPositionsCreator.cs:line 30
+----------------------------------------
+06.01.2020 14:19:03
+System.Data.SqlClient.SqlException
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.OrderPropositionPositionRepository.GetOrderPropositionPositionsByPropositionOrderId(Guid propositionOrderId) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\OrderPropositionPositionRepository.cs:line 32
+   at Domain.Providers.OrderPropositionPositions.Concrete.OrderPropositionsPositionsProvider.GetOrderPropositionPositionsByOrderPropositionId(IGetOrderPropositionPositionByOrderPropositionIdRequest getOrderPropositionPositionByOrderPropositionIdRequest) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\OrderPropositionPositions\Concrete\OrderPropositionsPositionsProvider.cs:line 32
+Could not find stored procedure 'GetOrderPropositionPositionsByPropositionOrderId'.
+System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'GetOrderPropositionPositionsByPropositionOrderId'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.OrderPropositionPositionRepository.GetOrderPropositionPositionsByPropositionOrderId(Guid propositionOrderId) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\OrderPropositionPositionRepository.cs:line 32
+   at Domain.Providers.OrderPropositionPositions.Concrete.OrderPropositionsPositionsProvider.GetOrderPropositionPositionsByOrderPropositionId(IGetOrderPropositionPositionByOrderPropositionIdRequest getOrderPropositionPositionByOrderPropositionIdRequest) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\OrderPropositionPositions\Concrete\OrderPropositionsPositionsProvider.cs:line 32
+ClientConnectionId:3964a6c4-7b7c-4916-8773-895e105eb6db
+Error Number:2812,State:62,Class:16
+----------------------------------------
+06.01.2020 14:20:14
+System.Data.SqlClient.SqlException
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.OrderPropositionPositionRepository.GetOrderPropositionPositionsByPropositionOrderId(Guid propositionOrderId) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\OrderPropositionPositionRepository.cs:line 32
+   at Domain.Providers.OrderPropositionPositions.Concrete.OrderPropositionsPositionsProvider.GetOrderPropositionPositionsByOrderPropositionId(IGetOrderPropositionPositionByOrderPropositionIdRequest getOrderPropositionPositionByOrderPropositionIdRequest) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\OrderPropositionPositions\Concrete\OrderPropositionsPositionsProvider.cs:line 32
+Could not find stored procedure 'GetOrderPropositionPositionsByPropositionOrderId'.
+System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'GetOrderPropositionPositionsByPropositionOrderId'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.OrderPropositionPositionRepository.GetOrderPropositionPositionsByPropositionOrderId(Guid propositionOrderId) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\OrderPropositionPositionRepository.cs:line 32
+   at Domain.Providers.OrderPropositionPositions.Concrete.OrderPropositionsPositionsProvider.GetOrderPropositionPositionsByOrderPropositionId(IGetOrderPropositionPositionByOrderPropositionIdRequest getOrderPropositionPositionByOrderPropositionIdRequest) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\OrderPropositionPositions\Concrete\OrderPropositionsPositionsProvider.cs:line 32
+ClientConnectionId:3964a6c4-7b7c-4916-8773-895e105eb6db
+Error Number:2812,State:62,Class:16
+----------------------------------------
+06.01.2020 14:20:20
+System.Data.SqlClient.SqlException
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.OrderPropositionPositionRepository.GetOrderPropositionPositionsByPropositionOrderId(Guid propositionOrderId) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\OrderPropositionPositionRepository.cs:line 32
+   at Domain.Providers.OrderPropositionPositions.Concrete.OrderPropositionsPositionsProvider.GetOrderPropositionPositionsByOrderPropositionId(IGetOrderPropositionPositionByOrderPropositionIdRequest getOrderPropositionPositionByOrderPropositionIdRequest) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\OrderPropositionPositions\Concrete\OrderPropositionsPositionsProvider.cs:line 32
+Procedure or function 'GetOrderPropositionPositionsByPropositionOrderId' expects parameter '@orderPropositionId', which was not supplied.
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function 'GetOrderPropositionPositionsByPropositionOrderId' expects parameter '@orderPropositionId', which was not supplied.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.OrderPropositionPositionRepository.GetOrderPropositionPositionsByPropositionOrderId(Guid propositionOrderId) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\OrderPropositionPositionRepository.cs:line 32
+   at Domain.Providers.OrderPropositionPositions.Concrete.OrderPropositionsPositionsProvider.GetOrderPropositionPositionsByOrderPropositionId(IGetOrderPropositionPositionByOrderPropositionIdRequest getOrderPropositionPositionByOrderPropositionIdRequest) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\OrderPropositionPositions\Concrete\OrderPropositionsPositionsProvider.cs:line 32
+ClientConnectionId:3964a6c4-7b7c-4916-8773-895e105eb6db
+Error Number:201,State:4,Class:16
+----------------------------------------
+06.01.2020 14:20:37
+System.Data.SqlClient.SqlException
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.OrderPropositionPositionRepository.GetOrderPropositionPositionsByPropositionOrderId(Guid propositionOrderId) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\OrderPropositionPositionRepository.cs:line 32
+   at Domain.Providers.OrderPropositionPositions.Concrete.OrderPropositionsPositionsProvider.GetOrderPropositionPositionsByOrderPropositionId(IGetOrderPropositionPositionByOrderPropositionIdRequest getOrderPropositionPositionByOrderPropositionIdRequest) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\OrderPropositionPositions\Concrete\OrderPropositionsPositionsProvider.cs:line 32
+Procedure or function 'GetOrderPropositionPositionsByPropositionOrderId' expects parameter '@orderPropositionId', which was not supplied.
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function 'GetOrderPropositionPositionsByPropositionOrderId' expects parameter '@orderPropositionId', which was not supplied.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 54
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Data.Infrastructure.StoredProceduresExecution.Concrete.StoredProceduresExecutor.ExecuteQuery(String name, IList`1 parameters) in C:\Users\Maciek\source\repos\MealsDistributor\Data\DatabaseInfrastructure\StoredProceduresExecution\Concrete\StoredProceduresExecutor.cs:line 55
+   at Domain.Repositories.Concrete.OrderPropositionPositionRepository.GetOrderPropositionPositionsByPropositionOrderId(Guid propositionOrderId) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Repositories\Concrete\OrderPropositionPositionRepository.cs:line 32
+   at Domain.Providers.OrderPropositionPositions.Concrete.OrderPropositionsPositionsProvider.GetOrderPropositionPositionsByOrderPropositionId(IGetOrderPropositionPositionByOrderPropositionIdRequest getOrderPropositionPositionByOrderPropositionIdRequest) in C:\Users\Maciek\source\repos\MealsDistributor\Domain\Providers\OrderPropositionPositions\Concrete\OrderPropositionsPositionsProvider.cs:line 32
+ClientConnectionId:3964a6c4-7b7c-4916-8773-895e105eb6db
+Error Number:201,State:4,Class:16

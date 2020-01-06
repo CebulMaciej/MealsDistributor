@@ -34,8 +34,14 @@ namespace Data.DatabaseInfrastructure
 
 
         public static string GetOrderPropositions = "GetOrderPropositions";
+        public static string GetOrderPropositionById = "GetOrderPropositionById";
         public static string GetOrderPropositionsInWhichUserHasAvailableOffer = "GetOrderPropositionsInWhichUserHasAvailableOffer";
         public static string CreateOrderProposition = "CreateOrderProposition";
+
+
+
+        public static string GetOrderPropositionPositionsByPropositionOrderId = "GetOrderPropositionPositionsByPropositionOrderId";
+        public static string CreateOrderPropositionPosition = "CreateOrderPropositionPosition";
         
         
 

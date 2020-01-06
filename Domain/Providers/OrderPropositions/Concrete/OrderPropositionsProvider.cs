@@ -59,5 +59,23 @@ namespace Domain.Providers.OrderPropositions.Concrete
                 return new GetOrderPropositionsResponse(OrderPropositionsProvideResultEnum.Exception);
             }
         }
+
+        public async Task<IGetOrderPropositionResponse> GetOrderPropositionById(IGetOrderPropositionByIdRequest request)
+        {
+            try
+            {
+                OrderProposition orderProposition = await _orderPropositionRepository.GetOrderPropositionById(request.OrderPropositionId);
+                if (orderProposition == null)
+                {
+                    return new GetOrderPropositionResponse(OrderPropositionsProvideResultEnum.NotFound);
+                }
+                return new GetOrderPropositionResponse(orderProposition);
+            }
+            catch (Exception exception)
+            {
+                _logger.Log(exception);
+                return new GetOrderPropositionResponse(OrderPropositionsProvideResultEnum.Exception);
+            }
+        }
     }
 }

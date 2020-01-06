@@ -6,7 +6,8 @@ namespace Domain.Creators.OrderPropositionsPositions.Response.Const
 {
     public enum OrderPropositionPositionCreateResultEnum
     {
-        AlreadyExists = 1,
-        Success = 0
+        Success,
+        AlreadyExists,
+        Exception
     }
 }

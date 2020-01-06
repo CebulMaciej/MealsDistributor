@@ -104,6 +104,12 @@ namespace Domain.Infrastructure.DataRowToObjectMapping.Concrete
             return new OrderProposition(GetGuidFromRow(dataRow,"OrdProp_Id"),GetDateTimeFromRow(dataRow,"OrdProp_CreationDate"),GetDateTimeFromRow(dataRow,"OrdProp_TimeToOrdering"),GetGuidFromRow(dataRow,"OrdProp_CreatorId"),GetGuidFromRow(dataRow,"OrdProp_RestaurantId"),(bool)dataRow["OrdProp_OrderingStopped"]);
         }
 
+        public OrderPropositionPosition ConvertOrderPropositionPosition(DataRow dataRow)
+        {
+            if (dataRow == null) return null;
+            return new OrderPropositionPosition(GetGuidFromRow(dataRow, "OPP_Id"),GetDateTimeFromRow(dataRow, "OPP_CreationDate"),GetGuidFromRow(dataRow, "OPP_UserId"),GetGuidFromRow(dataRow, "OPP_MealId"),GetGuidFromRow(dataRow, "Opp_OrderPropositionId"));
+        }
+
         private static Guid GetGuidFromRow(DataRow row, string key) => Guid.Parse(row[key].ToString());
         private static DateTime GetDateTimeFromRow(DataRow row, string key) => DateTime.Parse(row[key].ToString());
         

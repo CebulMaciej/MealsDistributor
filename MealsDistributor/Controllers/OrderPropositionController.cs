@@ -121,6 +121,26 @@ namespace MealsDistributor.Controllers
             }
 
         }
+
+        [HttpPost("/{id:Guid}/realize")]
+        [Authorize]
+        [ProducesResponseType(200, Type = typeof(IList<OrderProposition>))]
+        public async Task<ActionResult> ConvertPropositionToOrder(CreateOrderPropositionRequestModel request)
+        {
+            try
+            {
+                Guid loggedInUserId = _userIdFromClaimsExpander.ExpandIdFromClaims(HttpContext.User);
+
+                
+            }
+            catch (Exception ex)
+            {
+                _logger.Log(ex);
+                return StatusCode(500);
+            }
+
+        }
+
         //TODO operations to reject orderProposition and block
 
         private ActionResult PrepareResponseAfterGetOrderPropositions(IGetOrderPropositionsResponse getOrderPropositionsResponse)

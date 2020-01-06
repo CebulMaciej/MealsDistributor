@@ -14,13 +14,4 @@
     </Reference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Providers\OrderPropositonPositions\Abstract\" />
-    <Folder Include="Providers\OrderPropositonPositions\Concrete\" />
-    <Folder Include="Providers\OrderPropositonPositions\Request\Abstract\" />
-    <Folder Include="Providers\OrderPropositonPositions\Request\Concrete\" />
-    <Folder Include="Providers\OrderPropositonPositions\Response\Abstract\" />
-    <Folder Include="Providers\OrderPropositonPositions\Response\Concrete\" />
-  </ItemGroup>
-
 </Project>

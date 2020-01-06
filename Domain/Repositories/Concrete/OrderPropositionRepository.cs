@@ -41,6 +41,15 @@ namespace Domain.Repositories.Concrete
             return (from DataRow row in dataSet.Tables[0].Rows select _dataRowToObjectMapper.ConvertOrderProposition(row)).ToList();
         }
 
+        public async Task<OrderProposition> GetOrderPropositionById(Guid id)
+        {
+            DataSet dataSet = await _storedProceduresExecutor.ExecuteQuery(StoredProceduresNames.GetOrderPropositionById, new List<SqlParameter>(1)
+            {
+                new SqlParameter("@orderPropositionId",id)
+            });
+            return _dataRowToObjectMapper.ConvertOrderProposition(dataSet.Tables[0].Rows[0]);
+        }
+
         public async Task<OrderPropositionWithResultCode> CreateOrderProposition(DateTime timeToOrdering, Guid userId, Guid restaurantId)
         {
             DataSet dataSet = await _storedProceduresExecutor.ExecuteQuery(StoredProceduresNames.CreateOrderProposition,

@@ -4,6 +4,10 @@ using Data.Infrastructure.StoredProceduresExecution.Abstract;
 using Data.Infrastructure.StoredProceduresExecution.Concrete;
 using Domain.Creators.Meals.Abstract;
 using Domain.Creators.Meals.Concrete;
+using Domain.Creators.OrderPropositions.Abstract;
+using Domain.Creators.OrderPropositions.Concrete;
+using Domain.Creators.OrderPropositionsPositions.Abstract;
+using Domain.Creators.OrderPropositionsPositions.Concrete;
 using Domain.Creators.Restaurants.Abstract;
 using Domain.Creators.Restaurants.Concrete;
 using Domain.Creators.Users.Abstract;
@@ -14,6 +18,10 @@ using Domain.Infrastructure.Logging.Abstract;
 using Domain.Infrastructure.Logging.Concrete;
 using Domain.Providers.Meals.Abstract;
 using Domain.Providers.Meals.Concrete;
+using Domain.Providers.OrderPropositionPositions.Abstract;
+using Domain.Providers.OrderPropositionPositions.Concrete;
+using Domain.Providers.OrderPropositions.Abstract;
+using Domain.Providers.OrderPropositions.Concrete;
 using Domain.Providers.Orders.Abstract;
 using Domain.Providers.Orders.Concrete;
 using Domain.Providers.OrdersPositions.Abstract;
@@ -104,6 +112,14 @@ namespace MealsDistributor
 
             services.AddTransient<IOrderPositionsProvider, OrderPositionsProvider>();
             services.AddTransient<IOrderPositionsRepository, OrderPositionsRepository>();
+
+            services.AddTransient<IOrderPropositionRepository, OrderPropositionRepository>();
+            services.AddTransient<IOrderPropositionsCreator, OrderPropositionsCreator>();
+            services.AddTransient<IOrderPropositionsProvider, OrderPropositionsProvider>();
+
+            services.AddTransient<IOrderPropositionPositionRepository, OrderPropositionPositionRepository>();
+            services.AddTransient<IOrderPropositionsPositionsCreator, OrderPropositionsPositionsCreator>();
+            services.AddTransient<IOrderPropositionsPositionsProvider, OrderPropositionsPositionsProvider>();
 
             services.AddSwaggerGen(c =>
             {

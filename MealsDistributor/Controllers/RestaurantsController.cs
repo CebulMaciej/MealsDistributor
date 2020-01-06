@@ -80,19 +80,14 @@ namespace MealsDistributor.Controllers
 
 
                 IGetRestaurantsResponse getRestaurantsResponse = await _restaurantProvider.GetRestaurants();
-                switch (getRestaurantsResponse.Result)
+                return getRestaurantsResponse.Result switch
                 {
-                    case RestaurantProvideResultEnum.Success:
-                        return Ok(getRestaurantsResponse.Restaurants);
-                    case RestaurantProvideResultEnum.NotFound:
-                        return NotFound();
-                    case RestaurantProvideResultEnum.Exception:
-                        return StatusCode(500);
-                    case RestaurantProvideResultEnum.Forbidden:
-                        return Forbid();
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
+                    RestaurantProvideResultEnum.Success => (ActionResult) Ok(getRestaurantsResponse.Restaurants),
+                    RestaurantProvideResultEnum.NotFound => NotFound(),
+                    RestaurantProvideResultEnum.Exception => StatusCode(500),
+                    RestaurantProvideResultEnum.Forbidden => Forbid(),
+                    _ => throw new ArgumentOutOfRangeException()
+                };
             }
             catch (Exception ex)
             {
