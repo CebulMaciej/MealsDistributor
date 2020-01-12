@@ -6,7 +6,9 @@ using MealsDistributor.Model.ApiModels;
 
 namespace MealsDistributor.Model.Response.Restaurant
 {
-    public class GetRestaurantResponseModel : RestaurantApiModel
+    public class GetRestaurantResponseModel 
     {
+        public RestaurantApiModel Restaurant { get; set; }
+        public IList<MealApiModel> Meals { get; set; }
     }
 }

@@ -22,6 +22,8 @@ using Domain.Providers.OrderPropositions.Request.Abstract;
 using Domain.Providers.OrderPropositions.Request.Concrete;
 using Domain.Providers.OrderPropositions.Response.Abstract;
 using MealsDistributor.Infrastructure.IdFromClaimsExpanding.Abstract;
+using MealsDistributor.Infrastructure.ObjectsToModelConverting.Abstract;
+using MealsDistributor.Model.ApiModels;
 using MealsDistributor.Model.Request.OrderProposition;
 using MealsDistributor.Model.Request.OrderPropositionPosition;
 using Microsoft.AspNetCore.Authorization;
@@ -38,17 +40,19 @@ namespace MealsDistributor.Controllers
         private readonly IOrderPropositionsPositionsProvider _orderPropositionsPositionsProvider;
         private readonly IUserIdFromClaimsExpander _userIdFromClaimsExpander;
         private readonly ILogger _logger;
-        public OrderPropositionsPositionsController(IOrderPropositionsPositionsCreator orderPropositionsPositionsCreator, IOrderPropositionsPositionsProvider orderPropositionsPositionsProvider, ILogger logger, IUserIdFromClaimsExpander userIdFromClaimsExpander)
+        private readonly IObjectToApiModelConverter _objectToApiModelConverter;
+        public OrderPropositionsPositionsController(IOrderPropositionsPositionsCreator orderPropositionsPositionsCreator, IOrderPropositionsPositionsProvider orderPropositionsPositionsProvider, ILogger logger, IUserIdFromClaimsExpander userIdFromClaimsExpander, IObjectToApiModelConverter objectToApiModelConverter)
         {
             _orderPropositionsPositionsCreator = orderPropositionsPositionsCreator;
             _orderPropositionsPositionsProvider = orderPropositionsPositionsProvider;
             _logger = logger;
             _userIdFromClaimsExpander = userIdFromClaimsExpander;
+            _objectToApiModelConverter = objectToApiModelConverter;
         }
-
-        [HttpGet("orderProposition/{id:Guid}/position")]
+        //TODO te rzeczy razem z obiektem OrderProposition - done
+        [HttpGet("order-proposition/{id:Guid}/position")]
         [Authorize]
-        [ProducesResponseType(200, Type = typeof(IList<OrderProposition>))]
+        [ProducesResponseType(200, Type = typeof(IList<OrderPropositionPositionApiModel>))]
         public async Task<ActionResult> GetOrderPropositionPositionsByOrderPropositionId(Guid id)
         {
             try
@@ -60,7 +64,7 @@ namespace MealsDistributor.Controllers
                         .GetOrderPropositionPositionsResult switch
                     {
                         GetOrderPropositionPositionsResult.Success => (ActionResult) Ok(
-                            getOrderPropositionPositionsByOrderPropositionIdResponse.OrderPropositionPositions),
+                            getOrderPropositionPositionsByOrderPropositionIdResponse.OrderPropositionPositions.Select(_objectToApiModelConverter.ConvertOrderPropositionPosition)),
                         GetOrderPropositionPositionsResult.NotFound => NotFound(),
                         GetOrderPropositionPositionsResult.Exception => StatusCode(500),
                         GetOrderPropositionPositionsResult.Forbidden => Forbid(),
@@ -76,9 +80,9 @@ namespace MealsDistributor.Controllers
         }
 
         
-        [HttpPost("orderProposition/{orderPropositionId:Guid}/position")]
+        [HttpPost("order-proposition/{orderPropositionId:Guid}/position")]
         [Authorize]
-        [ProducesResponseType(200, Type = typeof(IList<OrderPropositionPosition>))]
+        [ProducesResponseType(200)]
         public async Task<ActionResult> CreateNewOrderPropositionPosition(Guid orderPropositionId, CreateOrderPropositionPositionRequest createOrderPropositionPositionRequest)
         {
             try
@@ -90,7 +94,7 @@ namespace MealsDistributor.Controllers
                 return orderPropositionPositionCreateResponse.Result switch
                 {
                     OrderPropositionPositionCreateResultEnum.Success => (ActionResult) Ok(
-                        orderPropositionPositionCreateResponse.OrderPropositionPosition),
+                        _objectToApiModelConverter.ConvertOrderPropositionPosition(orderPropositionPositionCreateResponse.OrderPropositionPosition)),
                     OrderPropositionPositionCreateResultEnum.AlreadyExists => Conflict(),
                     OrderPropositionPositionCreateResultEnum.Exception => StatusCode(500),
                     _ => throw new ArgumentOutOfRangeException()

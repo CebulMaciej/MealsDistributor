@@ -11,5 +11,6 @@ namespace Domain.Repositories.Abstract
         Task<IList<Order>> GetOrders();
         Task<Order> GetOrderById(Guid orderId);
         Task<Order> CreateOrder(Guid orderPropositionId);
+        Task MarkOrderAsOrdered(Guid id);
     }
 }

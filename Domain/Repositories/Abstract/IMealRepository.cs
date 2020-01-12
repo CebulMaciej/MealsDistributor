@@ -13,8 +13,7 @@ namespace Domain.Repositories.Abstract
         Task<Meal> CreateMeal(string name, string description, decimal price, DateTime? startDate, DateTime? endDate,
             Guid restaurantId);
         Task<IList<Meal>> GetMealsByRestaurantId(Guid restaurantId);
-        Task<Meal> UpdateMeal(Guid id, string name, string description, decimal price, DateTime? startDate, DateTime? endDate,
-            Guid restaurantId);
+        Task<Meal> UpdateMeal(Guid id, string name, string description, decimal price, DateTime? startDate, DateTime? endDate);
 
         Task RemoveMeal(Guid id);
     }

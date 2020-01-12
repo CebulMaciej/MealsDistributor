@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Domain.BusinessObject;
 using Domain.Creators.Meals.Abstract;
 using Domain.Creators.Meals.Request.Abstract;
 using Domain.Creators.Meals.Request.Concrete;
@@ -140,24 +141,23 @@ namespace MealsDistributor.Controllers
             }
         }
 
-        private static CreateMealRequest PrepareCreateMealRequestFromApiRequest(MealApiModel requestModel)
+        private static CreateMealRequest PrepareCreateMealRequestFromApiRequest(AddMealRequestModel requestModel)
         {
             return new CreateMealRequest(requestModel.Name,requestModel.Description,
                 requestModel.Price, requestModel.StartDate, requestModel.EndDate, requestModel.RestaurantId.Value);
         }
 
         [HttpPut("meal")]
-        [ProducesResponseType(200)]
+        [ProducesResponseType(typeof(MealApiModel),200)]
         public async Task<ActionResult> EditMeal(EditMealRequestModel requestModel)
         {
             try
             {
                 IUpdateMealRequest updateMealRequest = new UpdateMealRequest(requestModel.Id.Value, requestModel.Name,
-                    requestModel.Description, requestModel.Price, requestModel.StartDate, requestModel.EndDate,
-                    requestModel.RestaurantId.Value);
+                    requestModel.Description, requestModel.Price, requestModel.StartDate, requestModel.EndDate);
                 IUpdateMealResponse response = await _mealUpdater.UpdateMeal(updateMealRequest);
 
-                if (response.Result == UpdateMealResponseEnum.Success) return Ok(response.Meal);
+                if (response.Result == UpdateMealResponseEnum.Success) return Ok(_objectToApiModelConverter.ConvertMeal(response.Meal));
                 return StatusCode(500);
             }
             catch (Exception ex)

@@ -33,7 +33,7 @@ namespace MealsDistributor.Controllers
             _userProvider = userProvider;
         }
 
-        [HttpPost]
+        [HttpPost("/login")]
         [ProducesResponseType(200)]
         public async Task<ActionResult> Login(LoginRequestModel requestModel)
         {
@@ -60,7 +60,7 @@ namespace MealsDistributor.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet("/logout")]
         [Authorize]
         [ProducesResponseType(200)]
         [ProducesResponseType(403)]

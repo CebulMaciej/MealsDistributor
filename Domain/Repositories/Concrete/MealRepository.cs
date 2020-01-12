@@ -66,8 +66,7 @@ namespace Domain.Repositories.Concrete
             return meals;
         }
 
-        public async Task<Meal> UpdateMeal(Guid id, string name, string description, decimal price, DateTime? startDate, DateTime? endDate,
-            Guid restaurantId)
+        public async Task<Meal> UpdateMeal(Guid id, string name, string description, decimal price, DateTime? startDate, DateTime? endDate)
         {
             DataSet dataSet = await _storedProceduresExecutor.ExecuteQuery(StoredProceduresNames.UpdateMeal,
                 new List<SqlParameter>
@@ -77,8 +76,7 @@ namespace Domain.Repositories.Concrete
                     new SqlParameter("@description",description),
                     new SqlParameter("@price",price),
                     new SqlParameter("@startDate",startDate),
-                    new SqlParameter("@endDate",endDate),
-                    new SqlParameter("@restaurantId",restaurantId)
+                    new SqlParameter("@endDate",endDate)
                 });
             return ExtractMealFromDataSet(dataSet);
         }

@@ -25,7 +25,7 @@ namespace Domain.Updater.Meals.Concrete
             try
             {
                 BusinessObject.Meal meal = await _mealRepository.UpdateMeal(updateMealRequest.Id,updateMealRequest.Name,updateMealRequest.Description,
-                    updateMealRequest.Price,updateMealRequest.StartDate,updateMealRequest.EndDate,updateMealRequest.RestaurantId);
+                    updateMealRequest.Price,updateMealRequest.StartDate,updateMealRequest.EndDate);
                 return new UpdateMealResponse(meal);
             }
             catch (Exception ex)

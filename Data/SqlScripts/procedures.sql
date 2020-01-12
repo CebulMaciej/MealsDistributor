@@ -248,8 +248,7 @@ create procedure UpdateMeal
 @description nvarchar(max),
 @price decimal(15,2),
 @startDate datetime,
-@endDate datetime,
-@restaurantId uniqueidentifier
+@endDate datetime
 as
 begin
 
@@ -263,8 +262,7 @@ begin
 	MLS_Description = @description,
 	MLS_Price = @price,
 	MLS_StartDate = @startDate,
-	MLS_EndDate = @endDate,
-	MLS_RestaurantId = @restaurantId
+	MLS_EndDate = @endDate
 	where MLS_Id = @mealId
 
 	exec GetMealById @mealId
@@ -508,6 +506,9 @@ begin
 		insert into dbo.OrderPositions(OP_Id,OP_CreationDate,OP_UserId,OP_MealId,OP_OrderId)
 		(select newId(),getdate(),OPP_UserId,OPP_MealId,@orderId from dbo.OrdersPropositionsPositions where OPP_OrderPropositionId = @orderPropositionId) 
 
+		delete from dbo.OrdersPropositionsPositions where Opp_OrderPropositionId = @orderPropositionId
+		delete from dbo.OrdersPropositions where OrdProp_Id = @orderPropositionId
+
 		exec GetOrderById @orderId
 
 
@@ -516,3 +517,14 @@ begin
 end
 
 go
+
+create procedure MarkOrderAsOrdered
+@orderId uniqueidentifier 
+as
+begin
+
+update Orders
+Set ORD_IsOrdered = 1
+where ORD_Id = @orderId
+
+end

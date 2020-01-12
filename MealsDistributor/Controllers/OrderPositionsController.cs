@@ -9,6 +9,7 @@ using Domain.Providers.OrdersPositions.Request.Concrete;
 using Domain.Providers.OrdersPositions.Response.Abstract;
 using Domain.Providers.OrdersPositions.Response.Const;
 using MealsDistributor.Infrastructure.IdFromClaimsExpanding.Abstract;
+using MealsDistributor.Infrastructure.ObjectsToModelConverting.Abstract;
 using MealsDistributor.Model.Request.OrderPosition;
 using MealsDistributor.Model.Response.OrderPosition;
 using Microsoft.AspNetCore.Mvc;
@@ -23,12 +24,14 @@ namespace MealsDistributor.Controllers
         private readonly ILogger _logger;
         private readonly IOrderPositionsProvider _orderPositionsProvider;
         private readonly IUserIdFromClaimsExpander _userIdFromClaimsExpander;
+        private readonly IObjectToApiModelConverter _objectToApiModelConverter;
 
-        public OrderPositionsController(ILogger logger, IOrderPositionsProvider orderPositionsProvider, IUserIdFromClaimsExpander userIdFromClaimsExpander)
+        public OrderPositionsController(ILogger logger, IOrderPositionsProvider orderPositionsProvider, IUserIdFromClaimsExpander userIdFromClaimsExpander, IObjectToApiModelConverter objectToApiModelConverter)
         {
             _logger = logger;
             _orderPositionsProvider = orderPositionsProvider;
             _userIdFromClaimsExpander = userIdFromClaimsExpander;
+            _objectToApiModelConverter = objectToApiModelConverter;
         }
 
         [HttpGet("/order/{id:Guid}/order-position")]
@@ -70,7 +73,7 @@ namespace MealsDistributor.Controllers
         {
             return getOrderPositionsResponse.OrderPositionProvideResult switch
             {
-                OrderPositionProvideResult.Success => (ActionResult) Ok(getOrderPositionsResponse.OrderPositions),
+                OrderPositionProvideResult.Success => (ActionResult) Ok(getOrderPositionsResponse.OrderPositions.Select(_objectToApiModelConverter.ConvertOrderPosition)),
                 OrderPositionProvideResult.NotFound => NotFound(),
                 OrderPositionProvideResult.Exception => StatusCode(500),
                 OrderPositionProvideResult.Forbidden => Forbid(),

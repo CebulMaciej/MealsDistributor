@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Domain.Creators.Restaurants.Abstract;
 using Domain.Creators.Restaurants.Request.Concrete;
 using Domain.Creators.Restaurants.Response.Abstract;
 using Domain.Creators.Restaurants.Response.Const;
 using Domain.Infrastructure.Logging.Abstract;
+using Domain.Providers.Meals.Abstract;
+using Domain.Providers.Meals.Request.Concrete;
 using Domain.Providers.Meals.Response;
+using Domain.Providers.Meals.Response.Abstract;
 using Domain.Providers.Restaurants.Abstract;
 using Domain.Providers.Restaurants.Request.Concrete;
 using Domain.Providers.Restaurants.Response.Abstract;
@@ -16,6 +20,7 @@ using Domain.Updater.Restaurants.Abstract;
 using Domain.Updater.Restaurants.Request.Concrete;
 using Domain.Updater.Restaurants.Response.Abstract;
 using Domain.Updater.Restaurants.Response.Const;
+using MealsDistributor.Infrastructure.ObjectsToModelConverting.Abstract;
 using MealsDistributor.Model.Request.Restaurant;
 using MealsDistributor.Model.Response.Restaurant;
 using Microsoft.AspNetCore.Mvc;
@@ -32,14 +37,18 @@ namespace MealsDistributor.Controllers
         private readonly IRestaurantCreator _restaurantCreator;
         private readonly IRestaurantRemover _restaurantRemover;
         private readonly IRestaurantUpdater _restaurantUpdater;
+        private readonly IObjectToApiModelConverter _objectToApiModelConverter;
+        private readonly IMealProvider _mealProvider;
 
-        public RestaurantsController(ILogger logger, IRestaurantProvider restaurantProvider, IRestaurantCreator restaurantCreator, IRestaurantRemover restaurantRemover, IRestaurantUpdater restaurantUpdater)
+        public RestaurantsController(ILogger logger, IRestaurantProvider restaurantProvider, IRestaurantCreator restaurantCreator, IRestaurantRemover restaurantRemover, IRestaurantUpdater restaurantUpdater, IObjectToApiModelConverter objectToApiModelConverter, IMealProvider mealProvider)
         {
             _logger = logger;
             _restaurantProvider = restaurantProvider;
             _restaurantCreator = restaurantCreator;
             _restaurantRemover = restaurantRemover;
             _restaurantUpdater = restaurantUpdater;
+            _objectToApiModelConverter = objectToApiModelConverter;
+            _mealProvider = mealProvider;
         }
 
         [HttpGet("restaurant/{id:Guid}")]
@@ -49,10 +58,20 @@ namespace MealsDistributor.Controllers
             try
             {
                 IGetRestaurantResponse getRestaurantResponse = await _restaurantProvider.GetRestaurant(new GetRestaurantRequest(id));
+
+                IGetMealsByRestaurantIdResponse getMealsByRestaurantIdResponse =
+                    await _mealProvider.GetMealsByRestaurantId(new GetMealsByRestaurantIdRequest(id));
+
+
                 switch (getRestaurantResponse.Result)
                 {
                     case RestaurantProvideResultEnum.Success:
-                        return Ok(getRestaurantResponse.Restaurant);
+                        return Ok(new GetRestaurantResponseModel
+                        {
+                            Restaurant = _objectToApiModelConverter.ConvertRestaurant(getRestaurantResponse.Restaurant),
+                            Meals = getMealsByRestaurantIdResponse.Meals.Select(_objectToApiModelConverter.ConvertMeal)
+                                .ToList()
+                        });
                     case RestaurantProvideResultEnum.NotFound:
                         return NotFound();
                     case RestaurantProvideResultEnum.Exception:
@@ -76,13 +95,11 @@ namespace MealsDistributor.Controllers
         {
             try
             {
-                var z = HttpContext.User;
-
 
                 IGetRestaurantsResponse getRestaurantsResponse = await _restaurantProvider.GetRestaurants();
                 return getRestaurantsResponse.Result switch
                 {
-                    RestaurantProvideResultEnum.Success => (ActionResult) Ok(getRestaurantsResponse.Restaurants),
+                    RestaurantProvideResultEnum.Success => (ActionResult) Ok(getRestaurantsResponse.Restaurants.Select(_objectToApiModelConverter.ConvertRestaurant)),
                     RestaurantProvideResultEnum.NotFound => NotFound(),
                     RestaurantProvideResultEnum.Exception => StatusCode(500),
                     RestaurantProvideResultEnum.Forbidden => Forbid(),
@@ -108,7 +125,7 @@ namespace MealsDistributor.Controllers
                 switch (createRestaurantResponse.Result)
                 {
                     case CreateRestaurantEnum.Success:
-                        return Ok(createRestaurantResponse.Restaurant);
+                        return Ok(_objectToApiModelConverter.ConvertRestaurant(createRestaurantResponse.Restaurant));
                     case CreateRestaurantEnum.Error:
                         return StatusCode(500);
                     case CreateRestaurantEnum.CreatedNotFound:
@@ -136,7 +153,7 @@ namespace MealsDistributor.Controllers
                 switch (restaurantUpdateResponse.Result)
                 {
                     case RestaurantUpdateResponseEnum.Success:
-                        return Ok(restaurantUpdateResponse.Restaurant);
+                        return Ok(_objectToApiModelConverter.ConvertRestaurant(restaurantUpdateResponse.Restaurant));
                     case RestaurantUpdateResponseEnum.NotFound:
                         return NotFound();
                     case RestaurantUpdateResponseEnum.Error:

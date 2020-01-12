@@ -5,7 +5,7 @@ namespace Domain.Updater.Meals.Request.Concrete
 {
     public class UpdateMealRequest : IUpdateMealRequest
     {
-        public UpdateMealRequest(Guid id, string name, string description, decimal price, DateTime? startDate, DateTime? endDate, Guid restaurantId)
+        public UpdateMealRequest(Guid id, string name, string description, decimal price, DateTime? startDate, DateTime? endDate)
         {
             Id = id;
             Name = name;
@@ -13,7 +13,6 @@ namespace Domain.Updater.Meals.Request.Concrete
             Price = price;
             StartDate = startDate;
             EndDate = endDate;
-            RestaurantId = restaurantId;
         }
 
         public Guid Id { get; }
@@ -22,6 +21,5 @@ namespace Domain.Updater.Meals.Request.Concrete
         public decimal Price { get; }
         public DateTime? StartDate { get; }
         public DateTime? EndDate { get; }
-        public Guid RestaurantId { get; }
     }
 }

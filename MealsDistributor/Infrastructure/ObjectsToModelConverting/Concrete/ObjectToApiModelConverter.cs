@@ -51,5 +51,73 @@ namespace MealsDistributor.Infrastructure.ObjectsToModelConverting.Concrete
                 StartDate = meal.StartDate 
             };
         }
+
+        public OrderPositionApiModel ConvertOrderPosition(OrderPosition orderPosition)
+        {
+            if (orderPosition == null) return null;
+            return new OrderPositionApiModel
+            {
+                Id = orderPosition.Id,
+                MealId = orderPosition.MealId,
+                CreationDate = orderPosition.CreationDate,
+                UserId = orderPosition.UserId,
+                OrderId = orderPosition.OrderId
+            };
+        }
+
+        public OrderPropositionApiModel ConvertOrderProposition(OrderProposition orderProposition)
+        {
+            if (orderProposition == null) return null;
+            return new OrderPropositionApiModel
+            {
+                Id = orderProposition.Id,
+                CreationDate = orderProposition.CreationDate,
+                CreatorID = orderProposition.CreatorID,
+                RestaurantId = orderProposition.RestaurantId,
+                TimeToOrdering = orderProposition.TimeToOrdering,
+                OrderingStopped = orderProposition.OrderingStopped
+            };
+        }
+
+        public OrderApiModel ConvertOrder(Order order)
+        {
+            if (order == null) return null;
+            return new OrderApiModel
+            {
+                Id = order.Id,
+                CreationDate = order.CreationDate,
+                RestaurantId = order.RestaurantId,
+                IsOrdered = order.IsOrdered,
+                OrderBoyId = order.OrderBoyId
+            };
+        }
+
+        public OrderPropositionPositionApiModel ConvertOrderPropositionPosition(OrderPropositionPosition orderPropositionPosition)
+        {
+            if (orderPropositionPosition == null) return null;
+            return new OrderPropositionPositionApiModel
+            {
+                Id = orderPropositionPosition.Id,
+                OrderPropositionId = orderPropositionPosition.OrderPropositionId,
+                CreationDate = orderPropositionPosition.CreationDate,
+                MealId = orderPropositionPosition.MealId,
+                UserId = orderPropositionPosition.UserId
+            };
+        }
+
+        public RestaurantApiModel ConvertRestaurant(Restaurant restaurant)
+        {
+            if (restaurant == null) return null;
+            return new RestaurantApiModel
+            {
+                Id = restaurant.Id,
+                Name = restaurant.Name,
+                MaxPaidOrderValue = restaurant.MaxPaidOrderValue,
+                DeliveryCost = restaurant.DeliveryCost,
+                IsPyszne = restaurant.IsPyszne,
+                PhoneNumber = restaurant.PhoneNumber,
+                MinOrderConst = restaurant.MinOrderCost
+            };
+        }
     }
 }

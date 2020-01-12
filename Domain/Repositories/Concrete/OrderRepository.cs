@@ -54,6 +54,14 @@ namespace Domain.Repositories.Concrete
             return GetOrderFromDataTable(dataSet.Tables[0]);
         }
 
+        public async Task MarkOrderAsOrdered(Guid id)
+        {
+            await _storedProceduresExecutor.ExecuteNonQuery(StoredProceduresNames.MakeOrderAsOrdered, new List<SqlParameter>
+            {
+                new SqlParameter("@orderId", id)
+            });
+        }
+
         private Order GetOrderFromDataTable(DataTable dataTable)
         {
             if (dataTable.Rows.Count == 0)

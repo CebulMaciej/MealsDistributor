@@ -44,6 +44,8 @@ using Domain.Updater.Configurations.Abstract;
 using Domain.Updater.Configurations.Concrete;
 using Domain.Updater.Meals.Abstract;
 using Domain.Updater.Meals.Concrete;
+using Domain.Updater.Order.Abstract;
+using Domain.Updater.Order.Concrete;
 using Domain.Updater.Restaurants.Abstract;
 using Domain.Updater.Restaurants.Concrete;
 using Domain.Updater.Users.Abstract;
@@ -128,6 +130,7 @@ namespace MealsDistributor
 
             
             services.AddTransient<IOrderPropositionRealizator, OrderPropositionRealizator>();
+            services.AddTransient<IOrderUpdater, OrderUpdater>();
 
             services.AddSwaggerGen(c =>
             {

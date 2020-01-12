@@ -10,6 +10,5 @@ namespace Domain.Updater.Meals.Request.Abstract
         decimal Price { get; }
         DateTime? StartDate { get; }
         DateTime? EndDate { get; }
-        Guid RestaurantId { get; }
     }
 }

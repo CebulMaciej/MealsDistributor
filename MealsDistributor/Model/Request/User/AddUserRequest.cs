@@ -12,7 +12,6 @@ namespace MealsDistributor.Model.Request.User
         public string ConfirmPassword { get; set; }
 
         public string Email { get; set; }
-        public int Role { get; set; }
         public bool IsValid => !string.IsNullOrWhiteSpace(Password) &&
                                !string.IsNullOrWhiteSpace(ConfirmPassword) &&
                                Password.Equals(ConfirmPassword) &&

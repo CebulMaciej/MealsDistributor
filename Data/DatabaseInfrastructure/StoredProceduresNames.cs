@@ -43,8 +43,9 @@ namespace Data.DatabaseInfrastructure
 
         public static string GetOrderPropositionPositionsByPropositionOrderId = "GetOrderPropositionPositionsByPropositionOrderId";
         public static string CreateOrderPropositionPosition = "CreateOrderPropositionPosition";
-        
-        
+
+        public static string MakeOrderAsOrdered = "MakeOrderAsOrdered";
+
 
     }
 }

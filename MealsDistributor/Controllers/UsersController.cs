@@ -114,6 +114,7 @@ namespace MealsDistributor.Controllers
         }
 
         [HttpPut]
+        [Authorize]
         [ProducesResponseType(200)]
         public async Task<ActionResult> EditUser(EditUserRequest requestModel)
         {
@@ -124,17 +125,40 @@ namespace MealsDistributor.Controllers
                     return StatusCode(400);
                 }
 
-                IUserUpdateRequest userUpdateRequest = new UserUpdateRequest(requestModel.Email,requestModel.Password,requestModel.Id);
+                Guid id = _userIdFromClaimsExpander.ExpandIdFromClaims(HttpContext.User);
+
+                IUserUpdateRequest userUpdateRequest = new UserUpdateRequest(requestModel.Email,requestModel.Password, id);
                 IUserUpdateResponse userUpdateResponse = await _userUpdater.UpdateUser(userUpdateRequest);
                 return PrepareResponseAfterEditUser(userUpdateResponse);
             }
             catch (Exception ex)
             {
                 _logger.Log(ex);
+                return StatusCode(500);
             }
 
-            return null;
         }
+        [HttpGet("/{id:Guid}")]
+        [Authorize]
+        [ProducesResponseType(200, Type = typeof(GetUserResponse))]
+        public async Task<ActionResult> GetUser(Guid id)
+        {
+            try
+            {
+                
+                IProvideUserResponse provideUserResponse = await _userProvider.GetUserById(
+                    new ProvideUserRequest(id));
+                return PrepareResponseAfterGetUser(provideUserResponse);
+            }
+            catch (Exception ex)
+            {
+                _logger.Log(ex);
+                return StatusCode(500);
+            }
+
+        }
+
+
 
         private ActionResult PrepareResponseAfterEditUser(IUserUpdateResponse userUpdateResponse)
         {

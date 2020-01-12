@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 
 namespace MealsDistributor.Model.ApiModels
 {
-    public class OrderApiModel
+    public class OrderPropositionApiModel
     {
         public Guid Id { get; set; }
         public DateTime CreationDate { get; set; }
-        public Guid OrderBoyId { get; set; }
+        public DateTime TimeToOrdering { get; set; }
+        public Guid CreatorID { get; set; }
         public Guid RestaurantId { get; set; }
-        public bool IsOrdered { get; set; }
+        public bool OrderingStopped { get; set; }
     }
 }
