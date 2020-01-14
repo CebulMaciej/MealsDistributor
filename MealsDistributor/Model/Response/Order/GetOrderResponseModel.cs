@@ -7,5 +7,7 @@ namespace MealsDistributor.Model.Response.Order
     {
         public OrderApiModel Order { get; set; }
         public IList<ExtendedOrderPositionApiModel> OrderPositions { get; set; }
+        public UserApiModel OrderBoy { get; set; }
+        public RestaurantApiModel Restaurant { get; set; }
     }
 }

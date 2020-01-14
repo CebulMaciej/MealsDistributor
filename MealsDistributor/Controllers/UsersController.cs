@@ -138,7 +138,7 @@ namespace MealsDistributor.Controllers
             }
 
         }
-        [HttpGet("/{id:Guid}")]
+        [HttpGet("{id:Guid}")]
         [Authorize]
         [ProducesResponseType(200, Type = typeof(GetUserResponse))]
         public async Task<ActionResult> GetUser(Guid id)

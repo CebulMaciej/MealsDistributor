@@ -166,23 +166,23 @@ namespace MealsDistributor.Controllers
                 return StatusCode(500);
             }
         }
-        [HttpDelete("meal")]
-        [ProducesResponseType(200)]
-        public async Task<ActionResult> RemoveMeal(Guid mealId)
-        {
-            try
-            {
-                IMealRemoveRequest mealRemoveRequest = new MealRemoveRequest(mealId);
-                IMealRemoveResponse response = await _mealsRemover.RemoveMeal(mealRemoveRequest);
-                if(response.Success)
-                    return Ok();
-                return StatusCode(500);
-            }
-            catch (Exception ex)
-            {
-                _logger.Log(ex);
-                return StatusCode(500);
-            }
-        }
+        //[HttpDelete("meal")]
+        //[ProducesResponseType(200)]
+        //public async Task<ActionResult> RemoveMeal(Guid mealId)
+        //{
+        //    try
+        //    {
+        //        IMealRemoveRequest mealRemoveRequest = new MealRemoveRequest(mealId);
+        //        IMealRemoveResponse response = await _mealsRemover.RemoveMeal(mealRemoveRequest);
+        //        if(response.Success)
+        //            return Ok();
+        //        return StatusCode(500);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _logger.Log(ex);
+        //        return StatusCode(500);
+        //    }
+        //}
     }
 }

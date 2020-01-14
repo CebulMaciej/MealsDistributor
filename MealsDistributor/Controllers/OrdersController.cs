@@ -16,6 +16,10 @@ using Domain.Providers.Orders.Response.Const;
 using Domain.Providers.OrdersPositions.Abstract;
 using Domain.Providers.OrdersPositions.Request.Concrete;
 using Domain.Providers.OrdersPositions.Response.Abstract;
+using Domain.Providers.Restaurants.Abstract;
+using Domain.Providers.Restaurants.Request.Concrete;
+using Domain.Providers.Users.Abstract;
+using Domain.Providers.Users.Request.Concrete;
 using Domain.Updater.Order.Abstract;
 using Domain.Updater.Order.Request.Concrete;
 using Domain.Updater.Order.Response.Abstract;
@@ -40,8 +44,10 @@ namespace MealsDistributor.Controllers
         private readonly IOrderPositionsProvider _orderPositionsProvider;
         private readonly IOrderUpdater _orderUpdater;
         private readonly IUserIdFromClaimsExpander _userIdFromClaimsExpander;
+        private readonly IUserProvider _userProvider;
+        private readonly IRestaurantProvider _restaurantProvider;
 
-        public OrdersController(ILogger logger, IOrderProvider orderProvider, IObjectToApiModelConverter objectToApiModelConverter, IMealProvider mealProvider, IOrderPositionsProvider orderPositionsProvider, IOrderUpdater orderUpdater, IUserIdFromClaimsExpander userIdFromClaimsExpander)
+        public OrdersController(ILogger logger, IOrderProvider orderProvider, IObjectToApiModelConverter objectToApiModelConverter, IMealProvider mealProvider, IOrderPositionsProvider orderPositionsProvider, IOrderUpdater orderUpdater, IUserIdFromClaimsExpander userIdFromClaimsExpander, IUserProvider userProvider)
         {
             _logger = logger;
             _orderProvider = orderProvider;
@@ -50,6 +56,7 @@ namespace MealsDistributor.Controllers
             _orderPositionsProvider = orderPositionsProvider;
             _orderUpdater = orderUpdater;
             _userIdFromClaimsExpander = userIdFromClaimsExpander;
+            _userProvider = userProvider;
         }
 
         [HttpGet("order/{id:Guid}")]
@@ -68,16 +75,19 @@ namespace MealsDistributor.Controllers
                     OrderProvideResultEnum.Success => (ActionResult) Ok(new GetOrderResponseModel
                     {
                         Order = _objectToApiModelConverter.ConvertOrder(getOrderResponse.Order),
+                        Restaurant = _objectToApiModelConverter.ConvertRestaurant(_restaurantProvider.GetRestaurant(new GetRestaurantRequest(getOrderResponse.Order.RestaurantId)).Result.Restaurant),
                         OrderPositions = getOrderPositionsResponse.OrderPositions.Select( x=>
                             new ExtendedOrderPositionApiModel
                             {
                                 Id = x.Id,
                                 CreationDate = x.CreationDate,
                                 MealId = x.MealId,
-                                Meal = _objectToApiModelConverter.ConvertMeal(_mealProvider.GetMealById(new GetMealByIdRequest(x.MealId)).Result.Meal),
+                                Meal = _objectToApiModelConverter.ConvertMeal(_mealProvider.GetMealById(new GetMealByIdRequest(x.MealId))?.Result?.Meal),
                                 UserId = x.UserId,
-                                OrderId = x.OrderId
-                            }).ToList()
+                                OrderId = x.OrderId,
+                                User = _objectToApiModelConverter.ConvertUser(_userProvider.GetUserById(new ProvideUserRequest(x.UserId))?.Result?.User)                           
+                            }).ToList(),
+                        OrderBoy =_objectToApiModelConverter.ConvertUser(_userProvider.GetUserById( new ProvideUserRequest(getOrderResponse.Order.OrderBoyId)).Result.User)
                     }),
                     OrderProvideResultEnum.NotFound => NotFound(),
                     OrderProvideResultEnum.Exception => StatusCode(500),
@@ -117,7 +127,7 @@ namespace MealsDistributor.Controllers
 
         //TODO Endpoint mark as ordered order
 
-        [HttpPut("orders/{id:Guid}/ordered")]
+        [HttpPut("order/{id:Guid}/ordered")]
         [ProducesResponseType(200)]
         public async Task<ActionResult> MarkAsOrdered(Guid id)
         {
