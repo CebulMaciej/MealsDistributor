@@ -24,6 +24,9 @@ using Domain.Providers.OrderPropositions.Request.Abstract;
 using Domain.Providers.OrderPropositions.Request.Concrete;
 using Domain.Providers.OrderPropositions.Response.Abstract;
 using Domain.Providers.OrderPropositions.Response.Const;
+using Domain.Providers.Restaurants.Abstract;
+using Domain.Providers.Restaurants.Request.Concrete;
+using Domain.Providers.Users.Abstract;
 using Domain.Providers.Users.Request.Concrete;
 using Domain.Providers.Users.Response.Abstract;
 using MealsDistributor.Infrastructure.IdFromClaimsExpanding.Abstract;
@@ -39,7 +42,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace MealsDistributor.Controllers
 {
-    [Route("api/")]
+    [Route("api")]
     [ApiController]
     public class OrderPropositionController : ControllerBase
     {
@@ -51,9 +54,11 @@ namespace MealsDistributor.Controllers
         private readonly IObjectToApiModelConverter _objectToApiModelConverter;
         private readonly IOrderPropositionsPositionsProvider _orderPropositionsPositionsProvider;
         private readonly IMealProvider _mealProvider;
+        private readonly IRestaurantProvider _restaurantProvider;
+        private readonly IUserProvider _userProvider;
 
         // TODO w  calym kontrolerze ogarnij zwracane obiekty - obiekty maja zawierać dopiero elementy - done
-        public OrderPropositionController(ILogger logger, IUserIdFromClaimsExpander userIdFromClaimsExpander, IOrderPropositionsProvider orderPropositionsProvider, IOrderPropositionsCreator orderPropositionsCreator, IOrderPropositionRealizator orderPropositionRealizator, IObjectToApiModelConverter objectToApiModelConverter, IOrderPropositionsPositionsProvider orderPropositionsPositionsProvider, IMealProvider mealProvider)
+        public OrderPropositionController(ILogger logger, IUserIdFromClaimsExpander userIdFromClaimsExpander, IOrderPropositionsProvider orderPropositionsProvider, IOrderPropositionsCreator orderPropositionsCreator, IOrderPropositionRealizator orderPropositionRealizator, IObjectToApiModelConverter objectToApiModelConverter, IOrderPropositionsPositionsProvider orderPropositionsPositionsProvider, IMealProvider mealProvider, IRestaurantProvider restaurantProvider,IUserProvider userProvider)
         {
             _logger = logger;
             _userIdFromClaimsExpander = userIdFromClaimsExpander;
@@ -63,11 +68,13 @@ namespace MealsDistributor.Controllers
             _objectToApiModelConverter = objectToApiModelConverter;
             _orderPropositionsPositionsProvider = orderPropositionsPositionsProvider;
             _mealProvider = mealProvider;
+            _restaurantProvider = restaurantProvider;
+            _userProvider = userProvider;
         }
 
-        [HttpGet("/order-propositions/participated")]
+        [HttpGet("order-propositions/participated")]
         [Authorize]
-        [ProducesResponseType(200, Type = typeof(IList<OrderPropositionApiModel>))]
+        [ProducesResponseType(200, Type = typeof(GetOrderPropositionsResponseModel))]
         public async Task<ActionResult> GetOrderPropositionInWhichUserTakePart()
         {
             try
@@ -92,7 +99,7 @@ namespace MealsDistributor.Controllers
 
         }
 
-        [HttpGet("/order-proposition/{id:Guid}")]
+        [HttpGet("order-proposition/{id:Guid}")]
         [Authorize]
         [ProducesResponseType(200, Type = typeof(GetOrderPropositionResponse))]
         public async Task<ActionResult> GetOrderPropositionById(Guid id)
@@ -113,6 +120,9 @@ namespace MealsDistributor.Controllers
                     case OrderPropositionsProvideResultEnum.Success:
                         return Ok(new GetOrderPropositionResponse
                         {
+                            Creator = _objectToApiModelConverter.ConvertUser(_userProvider.GetUserById(new ProvideUserRequest(response.OrderProposition.CreatorID)).Result.User),
+                            Restaurant = _objectToApiModelConverter.ConvertRestaurant(_restaurantProvider.GetRestaurant(new GetRestaurantRequest(response.OrderProposition.RestaurantId)).Result.Restaurant),
+                            
                             OrderProposition = _objectToApiModelConverter.ConvertOrderProposition(response.OrderProposition),
                             Positions = getOrderPropositionPositionsResponse.OrderPropositionPositions.Select(x => new ExtendedOrderPropositionPositionApiModel
                             {
@@ -121,7 +131,8 @@ namespace MealsDistributor.Controllers
                                 CreationDate = x.CreationDate,
                                 Meal = _objectToApiModelConverter.ConvertMeal(_mealProvider.GetMealById(new GetMealByIdRequest(x.MealId)).Result.Meal),
                                 OrderPropositionId = x.OrderPropositionId,
-                                UserId = x.UserId
+                                UserId = x.UserId,
+                                User = _objectToApiModelConverter.ConvertUser(_userProvider.GetUserById(new ProvideUserRequest(x.UserId)).Result.User)
                             }).ToList()
                         });
                     case OrderPropositionsProvideResultEnum.NotFound:
@@ -143,9 +154,9 @@ namespace MealsDistributor.Controllers
 
         }
 
-        [HttpGet("/order-propositions/available")]
+        [HttpGet("order-propositions/available")]
         [Authorize]
-        [ProducesResponseType(200, Type = typeof(IList<OrderProposition>))]
+        [ProducesResponseType(200, Type = typeof(GetOrderPropositionsResponseModel))]
         public async Task<ActionResult> GetActualAvailableOrderPropositions()
         {
             try
@@ -165,9 +176,9 @@ namespace MealsDistributor.Controllers
             }
 
         }
-        [HttpPost("/order-proposition")]
+        [HttpPost("order-proposition")]
         [Authorize]
-        [ProducesResponseType(200, Type = typeof(IList<OrderProposition>))]
+        [ProducesResponseType(200, Type = typeof(OrderPropositionApiModel))]
         public async Task<ActionResult> CreateNewOrderProposition(CreateOrderPropositionRequestModel request)
         {
             try
@@ -195,7 +206,7 @@ namespace MealsDistributor.Controllers
 
         }
 
-        [HttpPost("/order-proposition/{id:Guid}/realize")]
+        [HttpPost("order-proposition/{id:Guid}/realize")]
         [Authorize]
         [ProducesResponseType(200, Type = typeof(Order))]
         public async Task<ActionResult> ConvertPropositionToOrder(Guid id)
@@ -230,7 +241,12 @@ namespace MealsDistributor.Controllers
             switch (getOrderPropositionsResponse.Result)
             {
                 case OrderPropositionsProvideResultEnum.Success:
-                    return Ok(getOrderPropositionsResponse.OrderPropositions.Select(_objectToApiModelConverter.ConvertOrderProposition));
+                    return Ok(new GetOrderPropositionsResponseModel
+                    {
+
+                        OrderPropositions =
+                     getOrderPropositionsResponse.OrderPropositions.Select(_objectToApiModelConverter.ConvertOrderProposition).ToList()
+                    });
                 case OrderPropositionsProvideResultEnum.NotFound:
                     return NotFound();
                 case OrderPropositionsProvideResultEnum.Exception:
