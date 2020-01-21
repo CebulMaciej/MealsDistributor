@@ -99,7 +99,7 @@ namespace MealsDistributor.Controllers
                 IGetRestaurantsResponse getRestaurantsResponse = await _restaurantProvider.GetRestaurants();
                 return getRestaurantsResponse.Result switch
                 {
-                    RestaurantProvideResultEnum.Success => (ActionResult) Ok(getRestaurantsResponse.Restaurants.Select(_objectToApiModelConverter.ConvertRestaurant)),
+                    RestaurantProvideResultEnum.Success => (ActionResult) Ok(new GetRestaurantsResponseModel {Restaurants = getRestaurantsResponse.Restaurants.Select(_objectToApiModelConverter.ConvertRestaurant).ToList()}),
                     RestaurantProvideResultEnum.NotFound => NotFound(),
                     RestaurantProvideResultEnum.Exception => StatusCode(500),
                     RestaurantProvideResultEnum.Forbidden => Forbid(),

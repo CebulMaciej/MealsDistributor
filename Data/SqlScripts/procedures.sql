@@ -18,7 +18,7 @@ begin
 declare @newId uniqueidentifier = newid()
 
 if not exists(select * from dbo.Users where USR_Email = @email)
-	insert into dbo.Users values(newid(),@email,@password,getdate(),0)
+	insert into dbo.Users values(@newId,@email,@password,getdate(),0)
 
 select * from dbo.Users where USR_Id = @newId
 end
