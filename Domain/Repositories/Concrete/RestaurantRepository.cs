@@ -28,9 +28,9 @@ namespace Domain.Repositories.Concrete
                 new SqlParameter("@Name",name),
                 new SqlParameter("@PhoneNumber",phoneNumber),
                 new SqlParameter("@IsPyszne",isPyszne),
-                new SqlParameter("@MinOrderCost",minOrderCost),
-                new SqlParameter("@DeliveryCost",deliveryCost),
-                new SqlParameter("@MaxPaidOrderValue",maxPaidOrderValue)
+                new SqlParameter("@MinOrderCost",minOrderCost ?? (object)DBNull.Value),
+                new SqlParameter("@DeliveryCost",deliveryCost ?? (object)DBNull.Value),
+                new SqlParameter("@MaxPaidOrderValue",maxPaidOrderValue ?? (object)DBNull.Value)
             };
 
             DataSet ds = await _storedProceduresExecutor.ExecuteQuery(StoredProceduresNames.CreateRestaurant, parameters);
